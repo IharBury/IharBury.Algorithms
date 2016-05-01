@@ -5,16 +5,11 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4282E942-4BD4-453F-88C0-67D6AB578D37}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{58DFFB81-92FF-482C-BEF5-306BF078B606}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "IharBury.Algorithms", "src\IharBury.Algorithms\IharBury.Algorithms.xproj", "{A8AABA49-84F2-4729-A716-01CBB30D69C4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B49E29F9-F538-46CE-BB00-8657DB71E022}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "IharBury.Algorithms.Tests", "test\IharBury.Algorithms.Tests\IharBury.Algorithms.Tests.xproj", "{FF98EF63-B85E-4B9F-B299-9F2845104966}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IharBury.Algorithms.Tests", "test\IharBury.Algorithms.Tests\IharBury.Algorithms.Tests.csproj", "{C1117624-4129-4D9C-AF67-B599679515DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IharBury.Algorithms", "src\IharBury.Algorithms\IharBury.Algorithms.csproj", "{39336777-56F2-46B3-807E-B44FC96CA6DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,20 +17,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A8AABA49-84F2-4729-A716-01CBB30D69C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8AABA49-84F2-4729-A716-01CBB30D69C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8AABA49-84F2-4729-A716-01CBB30D69C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8AABA49-84F2-4729-A716-01CBB30D69C4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FF98EF63-B85E-4B9F-B299-9F2845104966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF98EF63-B85E-4B9F-B299-9F2845104966}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF98EF63-B85E-4B9F-B299-9F2845104966}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF98EF63-B85E-4B9F-B299-9F2845104966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1117624-4129-4D9C-AF67-B599679515DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1117624-4129-4D9C-AF67-B599679515DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1117624-4129-4D9C-AF67-B599679515DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1117624-4129-4D9C-AF67-B599679515DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39336777-56F2-46B3-807E-B44FC96CA6DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39336777-56F2-46B3-807E-B44FC96CA6DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39336777-56F2-46B3-807E-B44FC96CA6DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39336777-56F2-46B3-807E-B44FC96CA6DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{A8AABA49-84F2-4729-A716-01CBB30D69C4} = {4282E942-4BD4-453F-88C0-67D6AB578D37}
-		{FF98EF63-B85E-4B9F-B299-9F2845104966} = {B49E29F9-F538-46CE-BB00-8657DB71E022}
+		{C1117624-4129-4D9C-AF67-B599679515DB} = {B49E29F9-F538-46CE-BB00-8657DB71E022}
+		{39336777-56F2-46B3-807E-B44FC96CA6DF} = {4282E942-4BD4-453F-88C0-67D6AB578D37}
 	EndGlobalSection
 EndGlobal

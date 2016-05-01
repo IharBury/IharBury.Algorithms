@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>IharBury.Algorithms</id>
+    <version>$version$</version>
+    <title>IharBury.Algorithms Class Library</title>
+    <authors>iharbury</authors>
+    <owners>iharbury</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Misc. C# algorithms to be used in competitions and other projects</description>
+    <dependencies />
+  </metadata>
+</package>
