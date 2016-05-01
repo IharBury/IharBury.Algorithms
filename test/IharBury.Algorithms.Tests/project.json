@@ -1,11 +1,16 @@
 ﻿{
   "version": "1.0.0-*",
-  "description": "IharBury.Algorithms Class Library",
+  "description": "IharBury.Algorithms Class Library Tests",
   "authors": [ "Ihar Bury" ],
   "tags": [ "" ],
   "projectUrl": "https://github.com/IharBury/IharBury.Algorithms",
   "licenseUrl": "http://opensource.org/licenses/mit-license.php",
   "frameworks": {
-    "net46": { }
+    "net46": {
+      "dependencies": {
+        "IharBury.Algorithms": "1.0.0-*",
+        "xunit": "2.1.0"
+      }
+    }
   }
 }
