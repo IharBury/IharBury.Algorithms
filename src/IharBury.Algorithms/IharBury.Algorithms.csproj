@@ -51,6 +51,7 @@
     <Compile Include="NumberExtensions.cs" />
     <Compile Include="Point2DInt16.cs" />
     <Compile Include="Point2DInt32.cs" />
+    <Compile Include="PrimeGeneratorInt32.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

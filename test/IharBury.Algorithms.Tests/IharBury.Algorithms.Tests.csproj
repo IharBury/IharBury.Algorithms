@@ -74,6 +74,7 @@
     <Compile Include="NumberExtensionsTests.cs" />
     <Compile Include="Point2DInt16Tests.cs" />
     <Compile Include="Point2DInt32Tests.cs" />
+    <Compile Include="PrimeGeneratorInt32Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
