@@ -33,6 +33,10 @@
     <CodeAnalysisRuleSet>IharBury.Algorithms.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="C5, Version=2.4.5947.17248, Culture=neutral, PublicKeyToken=282361b99ded7e8e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\C5.2.4.5947.17249\lib\net45\C5.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
@@ -45,7 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AngularCoordinateInt32.cs" />
+    <Compile Include="Cancellation.cs" />
     <Compile Include="DictionaryExtensions.cs" />
+    <Compile Include="Graphs.cs" />
+    <Compile Include="GridGraph.cs" />
     <Compile Include="Line2DInt16.cs" />
     <Compile Include="Line2DInt32.cs" />
     <Compile Include="NumberExtensions.cs" />

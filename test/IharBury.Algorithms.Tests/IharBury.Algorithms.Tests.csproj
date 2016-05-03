@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FakeItEasy, Version=2.0.0.0, Culture=neutral, PublicKeyToken=eff28e2146d5fd2c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FakeItEasy.2.0.0-rc2\lib\net40\FakeItEasy.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Numerics" />
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
@@ -69,6 +73,7 @@
   <ItemGroup>
     <Compile Include="AngularCoordinateInt32Tests.cs" />
     <Compile Include="DictionaryExtensionsTests.cs" />
+    <Compile Include="GraphsTests.cs" />
     <Compile Include="Line2DInt16Tests.cs" />
     <Compile Include="Line2DInt32Tests.cs" />
     <Compile Include="NumberExtensionsTests.cs" />

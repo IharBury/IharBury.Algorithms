@@ -73,5 +73,6 @@
   </Rules>
   <Rules AnalyzerId="RefactoringEssentials" RuleNamespace="RefactoringEssentials">
     <Rule Id="RECS0145" Action="None" />
+    <Rule Id="RECS0017" Action="None" />
   </Rules>
 </RuleSet>
