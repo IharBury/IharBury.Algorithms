@@ -51,6 +51,7 @@
     <Compile Include="AngularCoordinateInt32.cs" />
     <Compile Include="Cancellation.cs" />
     <Compile Include="DictionaryExtensions.cs" />
+    <Compile Include="Optional.cs" />
     <Compile Include="Graphs.cs" />
     <Compile Include="GridGraph.cs" />
     <Compile Include="ICancellation.cs" />
