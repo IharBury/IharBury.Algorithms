@@ -116,6 +116,49 @@ namespace IharBury.Algorithms.Tests
                 Assert.NotNull(matching);
                 Assert.Equal(7, matching.Count);
             }
+
+            [Fact]
+            public void NodeCannotGetIntoMultipleMatchings()
+            {
+                var edges = new List<Tuple<int, int>>
+                {
+                    Tuple.Create(1, 9),
+                    Tuple.Create(1, 10),
+                    Tuple.Create(2, 11),
+                    Tuple.Create(2, 12),
+                    Tuple.Create(3, 13),
+                    Tuple.Create(4, 10),
+                    Tuple.Create(4, 13),
+                    Tuple.Create(5, 14),
+                    Tuple.Create(5, 12),
+                    Tuple.Create(6, 11),
+                    Tuple.Create(7, 14),
+                    Tuple.Create(7, 11),
+                    Tuple.Create(7, 15),
+                    Tuple.Create(7, 12),
+                    Tuple.Create(8, 16)
+                };
+                var firstNodeSet = new[] { 1, 2, 3, 4, 5, 6, 7, 8 };
+                var secondNodeSet = new[] { 9, 10, 11, 12, 13, 14, 15, 16 };
+
+                var matching = BipartiteGraphs.GetMaxCardinalityMatching<int, Tuple<int, int>>(
+                    firstNodeSet,
+                    secondNodeSet,
+                    (node, action, cancellation) =>
+                    {
+                        foreach (var edge in edges)
+                        {
+                            if (cancellation.IsRequested)
+                                break;
+                            if ((edge.Item1 == node) || (edge.Item2 == node))
+                                action(edge);
+                        }
+                    },
+                    (edge, node) => edge.Item1 == node ? edge.Item2 : edge.Item1);
+
+                Assert.NotNull(matching);
+                Assert.Equal(8, matching.Count);
+            }
         }
     }
 }

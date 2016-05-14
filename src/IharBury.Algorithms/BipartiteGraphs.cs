@@ -70,6 +70,7 @@ namespace IharBury.Algorithms
                     layers,
                     reachedFreeSecondSetNodes,
                     lastLayerIndex,
+                    matchingEdges,
                     reverseAugmentingPaths);
 
                 if (reverseAugmentingPaths.Count == 0)
@@ -218,6 +219,7 @@ namespace IharBury.Algorithms
             List<ICollection<TNode>> layers,
             ICollection<TNode> reachedFreeSecondSetNodes,
             int lastLayerIndex,
+            ICollection<TEdge> matchingEdges,
             List<IReadOnlyList<NodeWithEdgeAndLayerIndex<TNode, TEdge>>> resultingReverseAugmentingPaths)
         {
             foreach (var reachedFreeSecondSetNode in reachedFreeSecondSetNodes)
@@ -238,9 +240,13 @@ namespace IharBury.Algorithms
                                 if (edge == null)
                                     throw new ArgumentNullException(nameof(edge));
 
-                                var adjuncedNode = getEdgeOtherNode(edge, nodeWithEdgeAndLayerIndex.Node);
-                                if (layers[layerIndex - 1].Contains(adjuncedNode))
-                                    visit(new NodeWithEdgeAndLayerIndex<TNode, TEdge>(adjuncedNode, edge, layerIndex - 1));
+                                var shouldBeMatchedEdge = layerIndex % 2 == 0;
+                                if (matchingEdges.Contains(edge) == shouldBeMatchedEdge)
+                                {
+                                    var adjuncedNode = getEdgeOtherNode(edge, nodeWithEdgeAndLayerIndex.Node);
+                                    if (layers[layerIndex - 1].Contains(adjuncedNode))
+                                        visit(new NodeWithEdgeAndLayerIndex<TNode, TEdge>(adjuncedNode, edge, layerIndex - 1));
+                                }
                             },
                             cancellation);
                     });
