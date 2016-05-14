@@ -101,6 +101,8 @@ namespace IharBury.Algorithms
             var firstLayer = EnsureEmptyNodeSetAt(layerIndex, resultingLayers, nodeSetFactory);
             foreach (var node in freeFirstSetNodes)
                 firstLayer.Add(node);
+            var layeredFirstSetNodes = nodeSetFactory();
+            var layeredSecondSetNodes = nodeSetFactory();
 
             while (true)
             {
@@ -112,8 +114,9 @@ namespace IharBury.Algorithms
                     freeSecondSetNodes,
                     matchingEdges,
                     resultingLayers,
-                    resultingReachedFreeSecondSetNodes,
-                    layerIndex))
+                    layerIndex,
+                    layeredSecondSetNodes,
+                    resultingReachedFreeSecondSetNodes))
                 {
                     lastLayerIndex = default(int);
                     return false;
@@ -129,7 +132,8 @@ namespace IharBury.Algorithms
                     nodeSetFactory,
                     matchingEdges,
                     resultingLayers,
-                    layerIndex))
+                    layerIndex,
+                    layeredFirstSetNodes))
                 {
                     lastLayerIndex = default(int);
                     return false;
@@ -146,7 +150,8 @@ namespace IharBury.Algorithms
             Func<ICollection<TNode>> nodeSetFactory,
             ICollection<TEdge> matchingEdges,
             List<ICollection<TNode>> layers,
-            int layerIndex)
+            int layerIndex,
+            ICollection<TNode> layeredFirstSetNodes)
         {
             var currentLayer = EnsureEmptyNodeSetAt(layerIndex, layers, nodeSetFactory);
             foreach (var node in layers[layerIndex - 1])
@@ -160,7 +165,11 @@ namespace IharBury.Algorithms
                         if (matchingEdges.Contains(edge))
                         {
                             var adjuncedNode = getEdgeOtherNode(edge, node);
-                            currentLayer.Add(adjuncedNode);
+                            if (!layeredFirstSetNodes.Contains(adjuncedNode))
+                            {
+                                currentLayer.Add(adjuncedNode);
+                                layeredFirstSetNodes.Add(adjuncedNode);
+                            }
                         }
                     },
                     Cancellation.Null);
@@ -174,8 +183,9 @@ namespace IharBury.Algorithms
             ICollection<TNode> freeSecondSetNodes,
             ICollection<TEdge> matchingEdges,
             List<ICollection<TNode>> layers,
-            ICollection<TNode> resultingReachedFreeSecondSetNodes,
-            int layerIndex)
+            int layerIndex,
+            ICollection<TNode> layeredSecondSetNodes,
+            ICollection<TNode> resultingReachedFreeSecondSetNodes)
         {
             var currentLayer = EnsureEmptyNodeSetAt(layerIndex, layers, nodeSetFactory);
             foreach (var node in layers[layerIndex - 1])
@@ -189,9 +199,13 @@ namespace IharBury.Algorithms
                         if (!matchingEdges.Contains(edge))
                         {
                             var adjuncedNode = getEdgeOtherNode(edge, node);
-                            currentLayer.Add(adjuncedNode);
-                            if (freeSecondSetNodes.Contains(adjuncedNode))
-                                resultingReachedFreeSecondSetNodes.Add(adjuncedNode);
+                            if (!layeredSecondSetNodes.Contains(adjuncedNode))
+                            {
+                                currentLayer.Add(adjuncedNode);
+                                layeredSecondSetNodes.Add(adjuncedNode);
+                                if (freeSecondSetNodes.Contains(adjuncedNode))
+                                    resultingReachedFreeSecondSetNodes.Add(adjuncedNode);
+                            }
                         }
                     },
                     Cancellation.Null);
