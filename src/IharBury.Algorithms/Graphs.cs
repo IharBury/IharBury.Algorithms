@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IharBury.Algorithms
 {
@@ -173,6 +174,25 @@ namespace IharBury.Algorithms
             public TEdge Edge { get; }
 
             public override string ToString() => $"{Node} from {Edge}";
+        }
+
+        public struct NodeTraversalWithState<TNode, TState>
+        {
+            public NodeTraversalWithState(TNode node, TState previousState)
+            {
+                if (node == null)
+                    throw new ArgumentNullException(nameof(node));
+                if (previousState == null)
+                    throw new ArgumentNullException(nameof(previousState));
+
+                Node = node;
+                PreviousState = previousState;
+            }
+
+            public TNode Node { get; }
+            public TState PreviousState { get; }
+
+            public override string ToString() => $"{Node} with previous state {PreviousState}";
         }
     }
 }
