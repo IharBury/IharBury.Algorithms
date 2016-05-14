@@ -7,7 +7,7 @@ namespace IharBury.Algorithms
         public static void Visit<TSequence, TValue>(
             TSequence sequence, 
             Action<TValue> visit, 
-            ICancellation cancellation = null)
+            ICancellation cancellation)
             where TSequence : IVisitableSequence<TValue>
         {
             if (sequence == null)

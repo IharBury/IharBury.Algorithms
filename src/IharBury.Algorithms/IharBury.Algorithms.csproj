@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AngularCoordinateInt32.cs" />
+    <Compile Include="BipartiteGraphs.cs" />
     <Compile Include="Cancellation.cs" />
     <Compile Include="DictionaryExtensions.cs" />
     <Compile Include="Graphs.cs" />

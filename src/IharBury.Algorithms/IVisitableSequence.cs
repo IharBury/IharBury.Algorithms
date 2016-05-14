@@ -8,6 +8,6 @@ namespace IharBury.Algorithms
         /// About 40% faster than <see cref="System.Collections.Generic.IEnumerable{T}" />
         /// for collections with just several items.
         /// </remarks>
-        void ForEach(Action<T> action, ICancellation cancellation = null);
+        void ForEach(Action<T> action, ICancellation cancellation);
     }
 }

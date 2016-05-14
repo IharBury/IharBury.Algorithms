@@ -53,6 +53,15 @@ namespace IharBury.Algorithms
                 initialNode,
                 adjuncedNodeWithDistance =>
                 {
+                    if (adjuncedNodeWithDistance.Node == null)
+                        throw new ArgumentException(
+                            $"{nameof(adjuncedNodeWithDistance)}.{nameof(adjuncedNodeWithDistance.Node)} == null",
+                            nameof(adjuncedNodeWithDistance));
+                    if (adjuncedNodeWithDistance.Distance == null)
+                        throw new ArgumentException(
+                            $"{nameof(adjuncedNodeWithDistance)}.{nameof(adjuncedNodeWithDistance.Distance)} == null",
+                            nameof(adjuncedNodeWithDistance));
+
                     if (!visitedNodes.Contains(adjuncedNodeWithDistance.Node))
                     {
                         queuedNodes.Add(new NodeTraversalWithDistance<TNode, TDistance>(
@@ -61,7 +70,8 @@ namespace IharBury.Algorithms
                             initialNode,
                             adjuncedNodeWithDistance.Distance));
                     }
-                });
+                },
+                Cancellation.Null);
 
             while (queuedNodes.Count != 0)
             {
@@ -76,6 +86,15 @@ namespace IharBury.Algorithms
                         currentNode,
                         adjuncedNodeWithDistance =>
                         {
+                            if (adjuncedNodeWithDistance.Node == null)
+                                throw new ArgumentException(
+                                    $"{nameof(adjuncedNodeWithDistance)}.{nameof(adjuncedNodeWithDistance.Node)} == null",
+                                    nameof(adjuncedNodeWithDistance));
+                            if (adjuncedNodeWithDistance.Distance == null)
+                                throw new ArgumentException(
+                                    $"{nameof(adjuncedNodeWithDistance)}.{nameof(adjuncedNodeWithDistance.Distance)} == null",
+                                    nameof(adjuncedNodeWithDistance));
+
                             if (!visitedNodes.Contains(adjuncedNodeWithDistance.Node))
                             {
                                 var distanceToAdjuncedNodeFromInitialNode = distanceAddition(
@@ -87,7 +106,8 @@ namespace IharBury.Algorithms
                                     currentNode,
                                     adjuncedNodeWithDistance.Distance));
                             }
-                        });
+                        },
+                        Cancellation.Null);
                 }
             }
         }
@@ -130,6 +150,11 @@ namespace IharBury.Algorithms
         {
             public NodeWithDistance(TNode node, TDistance distance)
             {
+                if (node == null)
+                    throw new ArgumentNullException(nameof(node));
+                if (distance == null)
+                    throw new ArgumentNullException(nameof(distance));
+
                 Node = node;
                 Distance = distance;
             }
@@ -182,8 +207,6 @@ namespace IharBury.Algorithms
             {
                 if (node == null)
                     throw new ArgumentNullException(nameof(node));
-                if (previousState == null)
-                    throw new ArgumentNullException(nameof(previousState));
 
                 Node = node;
                 PreviousState = previousState;

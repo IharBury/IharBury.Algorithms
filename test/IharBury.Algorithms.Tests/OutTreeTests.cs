@@ -23,9 +23,6 @@ namespace IharBury.Algorithms.Tests
                 node => node == 3,
                 (node, visit, cancellation) =>
                 {
-                    if (cancellation == null)
-                        cancellation = Cancellation.Null;
-
                     foreach (var adjuncedNode in adjuncedNodesAwayFromRoot[node])
                     {
                         if (cancellation.IsRequested)

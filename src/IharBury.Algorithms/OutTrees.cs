@@ -18,7 +18,14 @@ namespace IharBury.Algorithms
             var pendingTraversals = new Stack<Graphs.NodeTraversal<TNode>>();
             adjuncedNodeAwayFromRootVisitor(
                 initialNode,
-                adjuncedNode => pendingTraversals.Push(new Graphs.NodeTraversal<TNode>(adjuncedNode, initialNode)));
+                adjuncedNode => 
+                {
+                    if (adjuncedNode == null)
+                        throw new ArgumentNullException(nameof(adjuncedNode));
+
+                    pendingTraversals.Push(new Graphs.NodeTraversal<TNode>(adjuncedNode, initialNode));
+                },
+                Cancellation.Null);
 
             while (pendingTraversals.Count > 0)
             {
@@ -27,7 +34,14 @@ namespace IharBury.Algorithms
 
                 adjuncedNodeAwayFromRootVisitor(
                     traversal.Node,
-                    adjuncedNode => pendingTraversals.Push(new Graphs.NodeTraversal<TNode>(adjuncedNode, traversal.Node)));
+                    adjuncedNode =>
+                    {
+                        if (adjuncedNode == null)
+                            throw new ArgumentNullException(nameof(adjuncedNode));
+
+                        pendingTraversals.Push(new Graphs.NodeTraversal<TNode>(adjuncedNode, traversal.Node));
+                    },
+                    Cancellation.Null);
             }
         }
 
@@ -35,8 +49,8 @@ namespace IharBury.Algorithms
             TNode initialNode,
             SequenceVisitor<TNode, TNode> adjuncedNodeAwayFromRootVisitor,
             Func<Graphs.NodeTraversalWithState<TNode, TState>, TState> visit,
-            TState initialState = default(TState),
-            ICancellation cancellation = null)
+            ICancellation cancellation,
+            TState initialState = default(TState))
         {
             if (initialNode == null)
                 throw new ArgumentNullException(nameof(initialNode));
@@ -52,7 +66,14 @@ namespace IharBury.Algorithms
             var pendingNodesWithDistances = new Stack<Graphs.NodeWithDistance<TNode, int>>();
             adjuncedNodeAwayFromRootVisitor(
                 initialNode,
-                adjuncedNode => pendingNodesWithDistances.Push(new Graphs.NodeWithDistance<TNode, int>(adjuncedNode, 1)));
+                adjuncedNode =>
+                {
+                    if (adjuncedNode == null)
+                        throw new ArgumentNullException(nameof(adjuncedNode));
+
+                    pendingNodesWithDistances.Push(new Graphs.NodeWithDistance<TNode, int>(adjuncedNode, 1));
+                },
+                Cancellation.Null);
 
             while (pendingNodesWithDistances.Count > 0)
             {
@@ -71,12 +92,19 @@ namespace IharBury.Algorithms
 
                 adjuncedNodeAwayFromRootVisitor(
                     nodeWithDistance.Node,
-                    adjuncedNode => pendingNodesWithDistances.Push(
-                        new Graphs.NodeWithDistance<TNode, int>(adjuncedNode, nodeWithDistance.Distance + 1)));
+                    adjuncedNode =>
+                    {
+                        if (adjuncedNode == null)
+                            throw new ArgumentNullException(nameof(adjuncedNode));
+
+                        pendingNodesWithDistances.Push(
+                            new Graphs.NodeWithDistance<TNode, int>(adjuncedNode, nodeWithDistance.Distance + 1));
+                    },
+                    Cancellation.Null);
             }
         }
 
-        public static IReadOnlyCollection<TNode> FindAnyPathAwayFromRoot<TNode>(
+        public static IReadOnlyList<TNode> FindAnyPathAwayFromRoot<TNode>(
             TNode sourceNode,
             Func<TNode, bool> isDestinationNode,
             SequenceVisitor<TNode, TNode> adjuncedNodeAwayFromRootVisitor)
@@ -110,8 +138,8 @@ namespace IharBury.Algorithms
 
                     return distance;
                 },
-                0,
-                cancellation);
+                cancellation,
+                0);
 
             return result;
         }

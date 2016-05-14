@@ -9,5 +9,5 @@ namespace IharBury.Algorithms
     public delegate void SequenceVisitor<TSequence, TValue>(
         TSequence sequence,
         Action<TValue> visit,
-        ICancellation cancellation = null);
+        ICancellation cancellation);
 }

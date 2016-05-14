@@ -19,9 +19,8 @@ namespace IharBury.Algorithms
             {
                 if (visit == null)
                     throw new ArgumentNullException(nameof(visit));
-
                 if (cancellation == null)
-                    cancellation = Cancellation.Null;
+                    throw new ArgumentNullException(nameof(cancellation));
 
                 if ((node.Row > 0) && !cancellation.IsRequested)
                     visit(new Graphs.NodeWithDistance<Node, long>(new Node(node.Row - 1, node.Column), 1));
@@ -45,9 +44,8 @@ namespace IharBury.Algorithms
             {
                 if (visit == null)
                     throw new ArgumentNullException(nameof(visit));
-
                 if (cancellation == null)
-                    cancellation = Cancellation.Null;
+                    throw new ArgumentNullException(nameof(cancellation));
 
                 if ((node.Row > 0) && !cancellation.IsRequested)
                     visit(new Node(node.Row - 1, node.Column));
