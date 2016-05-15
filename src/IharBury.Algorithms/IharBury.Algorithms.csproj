@@ -52,6 +52,7 @@
     <Compile Include="BipartiteGraphs.cs" />
     <Compile Include="Cancellation.cs" />
     <Compile Include="DictionaryExtensions.cs" />
+    <Compile Include="ExtremalCombinatorics.cs" />
     <Compile Include="Graphs.cs" />
     <Compile Include="GridGraph.cs" />
     <Compile Include="ICancellation.cs" />
