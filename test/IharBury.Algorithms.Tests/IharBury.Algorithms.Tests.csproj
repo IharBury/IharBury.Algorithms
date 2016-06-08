@@ -74,6 +74,8 @@
     <Compile Include="AngularCoordinateInt32Tests.cs" />
     <Compile Include="DictionaryExtensionsTests.cs" />
     <Compile Include="GraphsTests.cs" />
+    <Compile Include="LargeArrayTests.cs" />
+    <Compile Include="LargeListTests.cs" />
     <Compile Include="Line2DInt16Tests.cs" />
     <Compile Include="Line2DInt32Tests.cs" />
     <Compile Include="NumberExtensionsTests.cs" />
