@@ -22,7 +22,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>IharBury.Algorithms.ruleset</CodeAnalysisRuleSet>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -50,20 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AngularCoordinateInt32.cs" />
-    <Compile Include="BipartiteGraphs.cs" />
     <Compile Include="Cancellation.cs" />
-    <Compile Include="CollectionExtensions.cs" />
     <Compile Include="DictionaryExtensions.cs" />
-    <Compile Include="ExtremalCombinatorics.cs" />
-    <Compile Include="ILargeArray.cs" />
-    <Compile Include="ILargeCollection.cs" />
-    <Compile Include="ILargeList.cs" />
-    <Compile Include="ILargeReadOnlyCollection.cs" />
-    <Compile Include="ILargeReadOnlyList.cs" />
-    <Compile Include="LargeArray.cs" />
-    <Compile Include="LargeList.cs" />
-    <Compile Include="LargeReadOnlyList.cs" />
-    <Compile Include="Optional.cs" />
     <Compile Include="Graphs.cs" />
     <Compile Include="GridGraph.cs" />
     <Compile Include="ICancellation.cs" />
@@ -71,12 +58,16 @@
     <Compile Include="Line2DInt16.cs" />
     <Compile Include="Line2DInt32.cs" />
     <Compile Include="NumberExtensions.cs" />
-    <Compile Include="OutTrees.cs" />
     <Compile Include="Point2DInt16.cs" />
     <Compile Include="Point2DInt32.cs" />
     <Compile Include="PrimeGeneratorInt32.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< ef248236677dd7038e4287e144a05f3058a8b541
     <Compile Include="SequenceVisitor.cs" />
+=======
+    <Compile Include="SequenceVisitorWithCancellation.cs" />
+    <Compile Include="Trees.cs" />
+>>>>>>> Trees added
     <Compile Include="VisitableSequences.cs" />
   </ItemGroup>
   <ItemGroup>

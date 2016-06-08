@@ -11,9 +11,9 @@ namespace IharBury.Algorithms
             int columnCount)
         {
             if (rowCount <= 0)
-                throw new ArgumentException($"{nameof(rowCount)} <= 0", nameof(rowCount));
+                throw new ArgumentException("Row count is not positive.", nameof(rowCount));
             if (columnCount <= 0)
-                throw new ArgumentException($"{nameof(columnCount)} <= 0", nameof(columnCount));
+                throw new ArgumentException("Column count is not positive.", nameof(columnCount));
 
             return (node, visit, cancellation) =>
             {
@@ -36,9 +36,9 @@ namespace IharBury.Algorithms
         public static SequenceVisitor<Node, Node> GetAdjucentNodeVisitor(int rowCount, int columnCount)
         {
             if (rowCount <= 0)
-                throw new ArgumentException($"{nameof(rowCount)} <= 0", nameof(rowCount));
+                throw new ArgumentException("Row count is not positive.", nameof(rowCount));
             if (columnCount <= 0)
-                throw new ArgumentException($"{nameof(columnCount)} <= 0", nameof(columnCount));
+                throw new ArgumentException("Column count is not positive.", nameof(columnCount));
 
             return (node, visit, cancellation) =>
             {
@@ -73,9 +73,9 @@ namespace IharBury.Algorithms
             public Node(int row, int column)
             {
                 if (row < 0)
-                    throw new ArgumentException($"{nameof(row)} < 0", nameof(row));
+                    throw new ArgumentException("Row is negative.", nameof(row));
                 if (column < 0)
-                    throw new ArgumentException($"{nameof(column)} < 0", nameof(column));
+                    throw new ArgumentException("Column is negative.", nameof(column));
 
                 Row = row;
                 Column = column;
@@ -100,9 +100,9 @@ namespace IharBury.Algorithms
             public NodeSet(int rowCount, int columnCount)
             {
                 if (rowCount <= 0)
-                    throw new ArgumentException($"{nameof(rowCount)} <= 0", nameof(rowCount));
+                    throw new ArgumentException("Row count is not positive.", nameof(rowCount));
                 if (columnCount <= 0)
-                    throw new ArgumentException($"{nameof(columnCount)} <= 0", nameof(columnCount));
+                    throw new ArgumentException("Column count is not positive.", nameof(columnCount));
 
                 RowCount = rowCount;
                 ColumnCount = columnCount;
@@ -179,13 +179,13 @@ namespace IharBury.Algorithms
             private int GetNodeIndex(Node node, string nodeName)
             {
                 if (node.Row < 0)
-                    throw new ArgumentException($"{nodeName}.{nameof(node.Row)} < 0", nodeName);
+                    throw new ArgumentException("Row is negative.", nodeName);
                 if (node.Row >= RowCount)
-                    throw new ArgumentException($"{nodeName}.{nameof(node.Row)} >= {nameof(RowCount)}", nodeName);
+                    throw new ArgumentException("Row is larger than the grid.", nodeName);
                 if (node.Column < 0)
-                    throw new ArgumentException($"{nodeName}.{nameof(node.Column)} < 0", nodeName);
+                    throw new ArgumentException("Column is negative.", nodeName);
                 if (node.Column >= ColumnCount)
-                    throw new ArgumentException($"{nodeName}.{nameof(node.Column)} >= {nameof(ColumnCount)}", nodeName);
+                    throw new ArgumentException("Column is larger than the grid.", nodeName);
 
                 return node.Row * ColumnCount + node.Column;
             }
