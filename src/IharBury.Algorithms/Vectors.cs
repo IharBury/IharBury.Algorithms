@@ -41,5 +41,35 @@ namespace IharBury.Algorithms
 
             return true;
         }
+
+        public static long GetSubvectorOccurenceCountIncludingIntersections<T>(
+            long vectorLength,
+            Func<long, T> getVectorItem,
+            long subvectorLength,
+            Func<long, T> getSubvectorItem,
+            IEqualityComparer<T> equalityComparer = null)
+        {
+            if (vectorLength < 0)
+                throw new ArgumentOutOfRangeException(nameof(vectorLength));
+            if (getVectorItem == null)
+                throw new ArgumentNullException(nameof(getVectorItem));
+            if (subvectorLength < 0)
+                throw new ArgumentOutOfRangeException(nameof(vectorLength));
+            if (getSubvectorItem == null)
+                throw new ArgumentNullException(nameof(getSubvectorItem));
+
+            var endOfPossibleIndexes = checked(vectorLength - subvectorLength).Max(0);
+            var count = 0L;
+            for (var vectorIndex = 0L; vectorIndex < endOfPossibleIndexes; vectorIndex++)
+                if (IsSubvectorAt(
+                        vectorLength,
+                        getVectorItem,
+                        subvectorLength,
+                        getSubvectorItem,
+                        vectorIndex,
+                        equalityComparer))
+                    count++;
+            return count;
+        }
     }
 }
