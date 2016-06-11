@@ -101,9 +101,9 @@ namespace IharBury.Algorithms
         public static int GetPageCount(this int value, int pageSize)
         {
             if (value < 0)
-                throw new ArgumentException("Value is negative.", nameof(value));
+                throw new ArgumentOutOfRangeException(nameof(value));
             if (pageSize <= 0)
-                throw new ArgumentException("Page size is not positive.", nameof(pageSize));
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
 
             return value.DivideAndRoundUp(pageSize);
         }
@@ -111,9 +111,9 @@ namespace IharBury.Algorithms
         public static long GetPageCount(this long value, long pageSize)
         {
             if (value < 0)
-                throw new ArgumentException("Value is negative.", nameof(value));
+                throw new ArgumentOutOfRangeException(nameof(value));
             if (pageSize <= 0)
-                throw new ArgumentException("Page size is not positive.", nameof(pageSize));
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
 
             return value.DivideAndRoundUp(pageSize);
         }
@@ -121,9 +121,9 @@ namespace IharBury.Algorithms
         public static int GetLastPageSize(this int value, int pageSize)
         {
             if (value < 0)
-                throw new ArgumentException("Value is negative.", nameof(value));
+                throw new ArgumentOutOfRangeException(nameof(value));
             if (pageSize <= 0)
-                throw new ArgumentException("Page size is not positive.", nameof(pageSize));
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
 
             if (value == 0)
                 return 0;
@@ -134,9 +134,9 @@ namespace IharBury.Algorithms
         public static int GetLastPageSize(this long value, int pageSize)
         {
             if (value < 0)
-                throw new ArgumentException("Value is negative.", nameof(value));
+                throw new ArgumentOutOfRangeException(nameof(value));
             if (pageSize <= 0)
-                throw new ArgumentException("Page size is not positive.", nameof(pageSize));
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
 
             if (value == 0)
                 return 0;
@@ -147,9 +147,9 @@ namespace IharBury.Algorithms
         public static long GetLastPageSize(this long value, long pageSize)
         {
             if (value < 0)
-                throw new ArgumentException("Value is negative.", nameof(value));
+                throw new ArgumentOutOfRangeException(nameof(value));
             if (pageSize <= 0)
-                throw new ArgumentException("Page size is not positive.", nameof(pageSize));
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
 
             if (value == 0)
                 return 0;
@@ -160,9 +160,9 @@ namespace IharBury.Algorithms
         public static int GetPageIndex(this int itemIndex, int pageSize)
         {
             if (itemIndex < 0)
-                throw new ArgumentException("Item index is negative.", nameof(itemIndex));
+                throw new ArgumentOutOfRangeException(nameof(itemIndex));
             if (pageSize <= 0)
-                throw new ArgumentException("Page size is not positive.", nameof(pageSize));
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
 
             return itemIndex / pageSize;
         }
@@ -170,9 +170,9 @@ namespace IharBury.Algorithms
         public static long GetPageIndex(this long itemIndex, long pageSize)
         {
             if (itemIndex < 0)
-                throw new ArgumentException("Item index is negative.", nameof(itemIndex));
+                throw new ArgumentOutOfRangeException(nameof(itemIndex));
             if (pageSize <= 0)
-                throw new ArgumentException("Page size is not positive.", nameof(pageSize));
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
 
             return itemIndex / pageSize;
         }
@@ -180,9 +180,9 @@ namespace IharBury.Algorithms
         public static int GetIndexOnPage(this int itemIndex, int pageSize)
         {
             if (itemIndex < 0)
-                throw new ArgumentException("Item index is negative.", nameof(itemIndex));
+                throw new ArgumentOutOfRangeException(nameof(itemIndex));
             if (pageSize <= 0)
-                throw new ArgumentException("Page size is not positive.", nameof(pageSize));
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
 
             return itemIndex % pageSize;
         }
@@ -190,9 +190,9 @@ namespace IharBury.Algorithms
         public static int GetIndexOnPage(this long itemIndex, int pageSize)
         {
             if (itemIndex < 0)
-                throw new ArgumentException("Item index is negative.", nameof(itemIndex));
+                throw new ArgumentOutOfRangeException(nameof(itemIndex));
             if (pageSize <= 0)
-                throw new ArgumentException("Page size is not positive.", nameof(pageSize));
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
 
             return checked((int)(itemIndex % pageSize));
         }
@@ -200,9 +200,9 @@ namespace IharBury.Algorithms
         public static long GetIndexOnPage(this long itemIndex, long pageSize)
         {
             if (itemIndex < 0)
-                throw new ArgumentException("Item index is negative.", nameof(itemIndex));
+                throw new ArgumentOutOfRangeException(nameof(itemIndex));
             if (pageSize <= 0)
-                throw new ArgumentException("Page size is not positive.", nameof(pageSize));
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
 
             return itemIndex % pageSize;
         }

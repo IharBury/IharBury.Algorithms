@@ -11,9 +11,9 @@ namespace IharBury.Algorithms
             int columnCount)
         {
             if (rowCount <= 0)
-                throw new ArgumentException("Row count is not positive.", nameof(rowCount));
+                throw new ArgumentOutOfRangeException(nameof(rowCount));
             if (columnCount <= 0)
-                throw new ArgumentException("Column count is not positive.", nameof(columnCount));
+                throw new ArgumentOutOfRangeException(nameof(columnCount));
 
             return (node, visit, cancellation) =>
             {
@@ -36,9 +36,9 @@ namespace IharBury.Algorithms
         public static SequenceVisitor<Node, Node> GetAdjucentNodeVisitor(int rowCount, int columnCount)
         {
             if (rowCount <= 0)
-                throw new ArgumentException("Row count is not positive.", nameof(rowCount));
+                throw new ArgumentOutOfRangeException(nameof(rowCount));
             if (columnCount <= 0)
-                throw new ArgumentException("Column count is not positive.", nameof(columnCount));
+                throw new ArgumentOutOfRangeException(nameof(columnCount));
 
             return (node, visit, cancellation) =>
             {
@@ -73,9 +73,9 @@ namespace IharBury.Algorithms
             public Node(int row, int column)
             {
                 if (row < 0)
-                    throw new ArgumentException("Row is negative.", nameof(row));
+                    throw new ArgumentOutOfRangeException(nameof(row));
                 if (column < 0)
-                    throw new ArgumentException("Column is negative.", nameof(column));
+                    throw new ArgumentOutOfRangeException(nameof(column));
 
                 Row = row;
                 Column = column;
@@ -100,9 +100,9 @@ namespace IharBury.Algorithms
             public NodeSet(int rowCount, int columnCount)
             {
                 if (rowCount <= 0)
-                    throw new ArgumentException("Row count is not positive.", nameof(rowCount));
+                    throw new ArgumentOutOfRangeException(nameof(rowCount));
                 if (columnCount <= 0)
-                    throw new ArgumentException("Column count is not positive.", nameof(columnCount));
+                    throw new ArgumentOutOfRangeException(nameof(columnCount));
 
                 RowCount = rowCount;
                 ColumnCount = columnCount;
@@ -176,16 +176,12 @@ namespace IharBury.Algorithms
 
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-            private int GetNodeIndex(Node node, string nodeName)
+            private int GetNodeIndex(Node node, string nodeArgumentName)
             {
-                if (node.Row < 0)
-                    throw new ArgumentException("Row is negative.", nodeName);
-                if (node.Row >= RowCount)
-                    throw new ArgumentException("Row is larger than the grid.", nodeName);
-                if (node.Column < 0)
-                    throw new ArgumentException("Column is negative.", nodeName);
-                if (node.Column >= ColumnCount)
-                    throw new ArgumentException("Column is larger than the grid.", nodeName);
+                if ((node.Row < 0) || (node.Row >= RowCount))
+                    throw new ArgumentException("Row is out of range.", nodeArgumentName);
+                if ((node.Column < 0) || (node.Column >= ColumnCount))
+                    throw new ArgumentException("Column is out of range.", nodeArgumentName);
 
                 return node.Row * ColumnCount + node.Column;
             }

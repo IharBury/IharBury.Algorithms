@@ -19,7 +19,7 @@ namespace IharBury.Algorithms
             if (items3 == null)
                 throw new ArgumentNullException(nameof(items3));
             if (maxPairUseLimit < 0)
-                throw new ArgumentException($"{nameof(maxPairUseLimit)} < 0", nameof(maxPairUseLimit));
+                throw new ArgumentOutOfRangeException(nameof(maxPairUseLimit));
 
             var itemListsOrderedByCount = new[]
             {

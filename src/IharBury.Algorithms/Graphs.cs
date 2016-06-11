@@ -54,13 +54,9 @@ namespace IharBury.Algorithms
                 adjuncedNodeWithDistance =>
                 {
                     if (adjuncedNodeWithDistance.Node == null)
-                        throw new ArgumentException(
-                            $"{nameof(adjuncedNodeWithDistance)}.{nameof(adjuncedNodeWithDistance.Node)} == null",
-                            nameof(adjuncedNodeWithDistance));
+                        throw new ArgumentException("Node is not set.", nameof(adjuncedNodeWithDistance));
                     if (adjuncedNodeWithDistance.Distance == null)
-                        throw new ArgumentException(
-                            $"{nameof(adjuncedNodeWithDistance)}.{nameof(adjuncedNodeWithDistance.Distance)} == null",
-                            nameof(adjuncedNodeWithDistance));
+                        throw new ArgumentException("Distance is not set.", nameof(adjuncedNodeWithDistance));
 
                     if (!visitedNodes.Contains(adjuncedNodeWithDistance.Node))
                     {
@@ -87,13 +83,9 @@ namespace IharBury.Algorithms
                         adjuncedNodeWithDistance =>
                         {
                             if (adjuncedNodeWithDistance.Node == null)
-                                throw new ArgumentException(
-                                    $"{nameof(adjuncedNodeWithDistance)}.{nameof(adjuncedNodeWithDistance.Node)} == null",
-                                    nameof(adjuncedNodeWithDistance));
+                                throw new ArgumentException("Node is not set.", nameof(adjuncedNodeWithDistance));
                             if (adjuncedNodeWithDistance.Distance == null)
-                                throw new ArgumentException(
-                                    $"{nameof(adjuncedNodeWithDistance)}.{nameof(adjuncedNodeWithDistance.Distance)} == null",
-                                    nameof(adjuncedNodeWithDistance));
+                                throw new ArgumentException("Distance is not set.", nameof(adjuncedNodeWithDistance));
 
                             if (!visitedNodes.Contains(adjuncedNodeWithDistance.Node))
                             {
