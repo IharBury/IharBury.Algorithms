@@ -17,7 +17,7 @@ namespace IharBury.Algorithms.Tests
         {
             var list = new LargeGrowingArrayUInt4();
             list.Add(7);
-            Assert.Equal(list, new byte[] { 7 });
+            Assert.Equal(new byte[] { 7 }, list);
         }
 
         [Fact]
@@ -26,7 +26,7 @@ namespace IharBury.Algorithms.Tests
             var list = new LargeGrowingArrayUInt4();
             list.Add(2);
             list.Add(13);
-            Assert.Equal(list, new byte[] { 2, 13 });
+            Assert.Equal(new byte[] { 2, 13 }, list);
         }
 
         [Fact]
@@ -35,7 +35,7 @@ namespace IharBury.Algorithms.Tests
             var list = new LargeGrowingArrayUInt4();
             list.AddAll(Enumerable.Repeat((byte)0, 7));
             list.Add(13);
-            Assert.Equal(list, Enumerable.Repeat((byte)0, 7).Concat(new byte[] { 13 }));
+            Assert.Equal(Enumerable.Repeat((byte)0, 7).Concat(new byte[] { 13 }), list);
         }
 
         [Fact]
@@ -44,7 +44,7 @@ namespace IharBury.Algorithms.Tests
             var list = new LargeGrowingArrayUInt4();
             list.AddAll(Enumerable.Repeat((byte)0, 8));
             list.Add(12);
-            Assert.Equal(list, Enumerable.Repeat((byte)0, 8).Concat(new byte[] { 12 }));
+            Assert.Equal(Enumerable.Repeat((byte)0, 8).Concat(new byte[] { 12 }), list);
         }
 
         [Fact]
@@ -54,7 +54,7 @@ namespace IharBury.Algorithms.Tests
             list.Add(12);
             list.Add(3);
             list.RemoveLast();
-            Assert.Equal(list, new byte[] { 12 });
+            Assert.Equal(new byte[] { 12 }, list);
         }
 
         [Fact]
@@ -73,7 +73,7 @@ namespace IharBury.Algorithms.Tests
             list.AddAll(Enumerable.Repeat((byte)0, 8));
             list.Add(13);
             list.RemoveLast();
-            Assert.Equal(list, Enumerable.Repeat((byte)0, 8));
+            Assert.Equal(Enumerable.Repeat((byte)0, 8), list);
         }
 
         [Fact]
@@ -82,7 +82,7 @@ namespace IharBury.Algorithms.Tests
             var list = new LargeGrowingArrayUInt4();
             list.AddAll(Enumerable.Repeat((byte)0, 8));
             list.RemoveLast();
-            Assert.Equal(list, Enumerable.Repeat((byte)0, 7));
+            Assert.Equal(Enumerable.Repeat((byte)0, 7), list);
         }
 
         [Fact]
@@ -100,7 +100,7 @@ namespace IharBury.Algorithms.Tests
             list.RemoveLast(3);
             list.EnsureMinCapacity(list.Count + 3);
             list.AddAll(new byte[] { 1, 2, 3 });
-            Assert.Equal(list, new byte[] { 1, 2, 13, 1, 1, 2, 1, 2, 3, 1, 2, 3 });
+            Assert.Equal(new byte[] { 1, 2, 13, 1, 1, 2, 1, 2, 3, 1, 2, 3 }, list);
         }
 
         [Fact]
@@ -115,7 +115,7 @@ namespace IharBury.Algorithms.Tests
         {
             var list = new LargeGrowingArrayUInt4();
             list.Add(12);
-            Assert.Equal(list, new byte[] { 12 });
+            Assert.Equal(new byte[] { 12 }, list);
         }
 
         [Fact]
@@ -124,7 +124,7 @@ namespace IharBury.Algorithms.Tests
             var list = new LargeGrowingArrayUInt4();
             var items = new byte[] { 1, 2, 3, 0, 2, 13, 1, 0 };
             list.AddAll(items);
-            Assert.Equal(list, items);
+            Assert.Equal(items, list);
         }
 
         [Fact]
@@ -133,7 +133,7 @@ namespace IharBury.Algorithms.Tests
             var list = new LargeGrowingArrayUInt4();
             var items = new byte[] { 1, 2, 3, 0, 12, 3, 1, 0, 0, 1, 1 };
             list.AddAll(items);
-            Assert.Equal(list, items);
+            Assert.Equal(items, list);
         }
 
         [Fact]
@@ -142,7 +142,7 @@ namespace IharBury.Algorithms.Tests
             var list = new LargeGrowingArrayUInt4();
             var items = new byte[] { 1, 2, 3, 0, 12, 3, 1, 0, 0, 1, 1, 2, 2, 3, 3, 3 };
             list.AddAll(items);
-            Assert.Equal(list, items);
+            Assert.Equal(items, list);
         }
     }
 }

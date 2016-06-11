@@ -29,7 +29,7 @@ namespace IharBury.Algorithms
             for (var chunkIndex = 0; chunkIndex < pageCount - 1; chunkIndex++)
                 pages.Add(new List<T>(pageSize));
             if (pageCount > 0)
-                pages[(int)pageCount - 1] = new List<T>(lastPageSize);
+                pages.Add(new List<T>(lastPageSize));
         }
 
         public T this[long index]
@@ -104,8 +104,8 @@ namespace IharBury.Algorithms
             if (requiredPageCount > pages.Capacity)
             {
                 var standardPageListIncreasedCapacity = 
-                    checked(pages.Capacity > int.MaxValue / 2 ? int.MaxValue : pages.Capacity * 2).Max(16);
-                pages.Capacity = requiredPageCount.Max(standardPageListIncreasedCapacity);
+                    checked(pages.Capacity > int.MaxValue / 2 ? int.MaxValue : pages.Capacity * 2).ButMin(16);
+                pages.Capacity = requiredPageCount.ButMin(standardPageListIncreasedCapacity);
             }
             if ((requiredPageCount > pages.Count) && (pages.Count > 0))
                 EnsurePageCapacity(pages[pages.Count - 1], pageSize);
@@ -127,8 +127,8 @@ namespace IharBury.Algorithms
             if (capacity > page.Capacity)
             {
                 var standardIncreasedCapacity = 
-                    (page.Capacity > pageSize / 2 ? pageSize : page.Capacity * 2).Max(16).Min(pageSize);
-                page.Capacity = capacity.Max(standardIncreasedCapacity);
+                    (page.Capacity > pageSize / 2 ? pageSize : page.Capacity * 2).ButMin(16).ButMax(pageSize);
+                page.Capacity = capacity.ButMin(standardIncreasedCapacity);
             }
         }
     }

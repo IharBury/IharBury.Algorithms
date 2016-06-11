@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System;
+using Xunit;
 
 namespace IharBury.Algorithms.Tests
 {
@@ -16,7 +17,7 @@ namespace IharBury.Algorithms.Tests
         {
             var list = new LargeGrowingArray<int>();
             list.Add(4);
-            Assert.Equal(list, new[] { 4 });
+            Assert.Equal(new[] { 4 }, list);
         }
 
         [Fact]
@@ -25,7 +26,7 @@ namespace IharBury.Algorithms.Tests
             var list = new LargeGrowingArray<int>();
             list.Add(4);
             list.Add(7);
-            Assert.Equal(list, new[] { 4, 7 });
+            Assert.Equal(new[] { 4, 7 }, list);
         }
 
         [Fact]
@@ -34,7 +35,7 @@ namespace IharBury.Algorithms.Tests
             var list = new LargeGrowingArray<int>(pageSize: 2);
             list.Add(4);
             list.Add(7);
-            Assert.Equal(list, new[] { 4, 7 });
+            Assert.Equal(new[] { 4, 7 }, list);
         }
 
         [Fact]
@@ -44,7 +45,7 @@ namespace IharBury.Algorithms.Tests
             list.Add(4);
             list.Add(7);
             list.Add(2);
-            Assert.Equal(list, new[] { 4, 7, 2 });
+            Assert.Equal(new[] { 4, 7, 2 }, list);
         }
 
         [Fact]
@@ -54,7 +55,7 @@ namespace IharBury.Algorithms.Tests
             list.Add(2);
             list.Add(7);
             list.RemoveLast();
-            Assert.Equal(list, new[] { 2 });
+            Assert.Equal(new[] { 2 }, list);
         }
 
         [Fact]
@@ -74,7 +75,7 @@ namespace IharBury.Algorithms.Tests
             list.Add(7);
             list.Add(3);
             list.RemoveLast();
-            Assert.Equal(list, new[] { 2, 7 });
+            Assert.Equal(new[] { 2, 7 }, list);
         }
 
         [Fact]
@@ -84,7 +85,7 @@ namespace IharBury.Algorithms.Tests
             list.Add(2);
             list.Add(7);
             list.RemoveLast();
-            Assert.Equal(list, new[] { 2 });
+            Assert.Equal(new[] { 2 }, list);
         }
 
         [Fact]
@@ -102,7 +103,7 @@ namespace IharBury.Algorithms.Tests
             list.RemoveLast(3);
             list.EnsureMinCapacity(list.Count + 3);
             list.AddAll(new[] { 23, 24, 25 });
-            Assert.Equal(list, new[] { 1, 2, 3, 4, 7, 8, 17, 18, 19, 23, 24, 25 });
+            Assert.Equal(new[] { 1, 2, 3, 4, 7, 8, 17, 18, 19, 23, 24, 25 }, list);
         }
 
         [Fact]
@@ -117,7 +118,7 @@ namespace IharBury.Algorithms.Tests
         {
             var list = new LargeGrowingArray<int>();
             list.Add(7);
-            Assert.Equal(list, new[] { 7 });
+            Assert.Equal(new[] { 7 }, list);
         }
 
         [Fact]
@@ -125,7 +126,7 @@ namespace IharBury.Algorithms.Tests
         {
             var list = new LargeGrowingArray<int>(pageSize: 2);
             list.AddAll(new[] { 7, 3 });
-            Assert.Equal(list, new int[] { 7, 3 });
+            Assert.Equal(new int[] { 7, 3 }, list);
         }
 
         [Fact]
@@ -133,7 +134,7 @@ namespace IharBury.Algorithms.Tests
         {
             var list = new LargeGrowingArray<int>(pageSize: 2);
             list.AddAll(new[] { 7, 3, 5 });
-            Assert.Equal(list, new int[] { 7, 3, 5 });
+            Assert.Equal(new int[] { 7, 3, 5 }, list);
         }
 
         [Fact]
@@ -141,7 +142,13 @@ namespace IharBury.Algorithms.Tests
         {
             var list = new LargeGrowingArray<int>(pageSize: 2);
             list.AddAll(new[] { 7, 3, 5, 1 });
-            Assert.Equal(list, new int[] { 7, 3, 5, 1 });
+            Assert.Equal(new int[] { 7, 3, 5, 1 }, list);
+        }
+
+        [Fact]
+        public void InitialCapacityCanResultInPartialPage()
+        {
+            new LargeGrowingArray<int>(3, 2);
         }
     }
 }

@@ -17,8 +17,8 @@ namespace IharBury.Algorithms
                 var absValue1 = value1.Abs();
                 var absValue2 = value2.Abs();
 
-                var lowerValue = absValue1.Min(absValue2);
-                var higherValue = absValue1.Max(absValue2);
+                var lowerValue = absValue1.ButMax(absValue2);
+                var higherValue = absValue1.ButMin(absValue2);
 
                 while (lowerValue != 0)
                 {
@@ -41,39 +41,41 @@ namespace IharBury.Algorithms
             return checked(value1 / value1.Gcd(value2) * value2);
         }
 
-        public static int Min(this int value1, int value2) => Math.Min(value1, value2);
+        public static int ButMax(this int value1, int value2) => Math.Min(value1, value2);
 
-        public static int Min(this int value1, int value2, int value3) => value1.Min(value2.Min(value3));
+        public static int ButMax(this int value1, int value2, int value3) => value1.ButMax(value2.ButMax(value3));
 
-        public static int Min(this int value1, int value2, int value3, int value4) => value1.Min(value2.Min(value3.Min(value4)));
+        public static int ButMax(this int value1, int value2, int value3, int value4) =>
+            value1.ButMax(value2.ButMax(value3.ButMax(value4)));
 
-        public static int Min(this int value1, params int[] otherValues) => new[] { value1 }.Concat(otherValues).Min();
+        public static int ButMax(this int value1, params int[] otherValues) => new[] { value1 }.Concat(otherValues).Min();
 
-        public static int Max(this int value1, int value2) => Math.Max(value1, value2);
+        public static int ButMin(this int value1, int value2) => Math.Max(value1, value2);
 
-        public static int Max(this int value1, int value2, int value3) => value1.Max(value2.Max(value3));
+        public static int ButMin(this int value1, int value2, int value3) => value1.ButMin(value2.ButMin(value3));
 
-        public static int Max(this int value1, int value2, int value3, int value4) => value1.Max(value2.Max(value3.Max(value4)));
+        public static int ButMin(this int value1, int value2, int value3, int value4) =>
+            value1.ButMin(value2.ButMin(value3.ButMin(value4)));
 
-        public static int Max(this int value1, params int[] otherValues) => new[] { value1 }.Concat(otherValues).Max();
+        public static int ButMin(this int value1, params int[] otherValues) => new[] { value1 }.Concat(otherValues).Max();
 
-        public static long Min(this long value1, long value2) => Math.Min(value1, value2);
+        public static long ButMax(this long value1, long value2) => Math.Min(value1, value2);
 
-        public static long Min(this long value1, long value2, long value3) => value1.Min(value2.Min(value3));
+        public static long ButMax(this long value1, long value2, long value3) => value1.ButMax(value2.ButMax(value3));
 
-        public static long Min(this long value1, long value2, long value3, long value4) => 
-            value1.Min(value2.Min(value3.Min(value4)));
+        public static long ButMax(this long value1, long value2, long value3, long value4) => 
+            value1.ButMax(value2.ButMax(value3.ButMax(value4)));
 
-        public static long Min(this long value1, params long[] otherValues) => new[] { value1 }.Concat(otherValues).Min();
+        public static long ButMax(this long value1, params long[] otherValues) => new[] { value1 }.Concat(otherValues).Min();
 
-        public static long Max(this long value1, long value2) => Math.Max(value1, value2);
+        public static long ButMin(this long value1, long value2) => Math.Max(value1, value2);
 
-        public static long Max(this long value1, long value2, long value3) => value1.Max(value2.Max(value3));
+        public static long ButMin(this long value1, long value2, long value3) => value1.ButMin(value2.ButMin(value3));
 
-        public static long Max(this long value1, long value2, long value3, long value4) => 
-            value1.Max(value2.Max(value3.Max(value4)));
+        public static long ButMin(this long value1, long value2, long value3, long value4) => 
+            value1.ButMin(value2.ButMin(value3.ButMin(value4)));
 
-        public static long Max(this long value1, params long[] otherValues) => new[] { value1 }.Concat(otherValues).Max();
+        public static long ButMin(this long value1, params long[] otherValues) => new[] { value1 }.Concat(otherValues).Max();
 
         public static long DivideAndRoundUp(this long value1, long value2)
         {
