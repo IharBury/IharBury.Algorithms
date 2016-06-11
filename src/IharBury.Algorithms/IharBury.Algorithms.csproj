@@ -72,6 +72,7 @@
     <Compile Include="PrimeGeneratorInt32.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SequenceVisitor.cs" />
+    <Compile Include="Vectors.cs" />
     <Compile Include="VisitableSequences.cs" />
   </ItemGroup>
   <ItemGroup>
