@@ -104,8 +104,8 @@ namespace IharBury.Algorithms
 
             var backtrackingVector = new Dictionary<long, long>();
             var effectiveEqualityComparer = equalityComparer ?? EqualityComparer<T>.Default;
-            var currentIndex = 1;
-            var currentFallbackIndex = 0;
+            var currentIndex = 1L;
+            var currentFallbackIndex = 0L;
             while (currentIndex < subvectorLength)
             {
                 if (effectiveEqualityComparer.Equals(getSubvectorItem(currentIndex), getSubvectorItem(currentFallbackIndex)))
