@@ -63,6 +63,7 @@
     <Compile Include="LargeArray.cs" />
     <Compile Include="LargeList.cs" />
     <Compile Include="LargeReadOnlyList.cs" />
+    <Compile Include="LargeTwoBitList.cs" />
     <Compile Include="Optional.cs" />
     <Compile Include="Graphs.cs" />
     <Compile Include="GridGraph.cs" />
@@ -82,10 +83,12 @@
   <ItemGroup>
     <None Include="IharBury.Algorithms.nuspec" />
     <None Include="IharBury.Algorithms.ruleset" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\..\packages\RefactoringEssentials.4.0.0\analyzers\dotnet\RefactoringEssentials.dll" />
+    <Analyzer Include="..\..\packages\RefactoringEssentials.4.1.0\analyzers\dotnet\RefactoringEssentials.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

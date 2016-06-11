@@ -70,9 +70,9 @@ namespace IharBury.Algorithms
 
         public IEnumerator<T> GetEnumerator() => pages.SelectMany(page => page).GetEnumerator();
 
-        public void Insert(long index, T value)
+        public void Insert(long index, T item)
         {
-            InsertAll(index, new[] { value }.AsLargeReadOnlyCollection());
+            InsertAll(index, new[] { item }.AsLargeReadOnlyCollection());
         }
 
         public bool Remove(T item)
@@ -96,6 +96,10 @@ namespace IharBury.Algorithms
         {
             if (index < 0)
                 throw new ArgumentException("Index is negative.", nameof(index));
+            if (index > Count)
+                throw new ArgumentException("Index is too large.", nameof(index));
+            if (items == null)
+                throw new ArgumentNullException(nameof(items));
 
             var countAfterRange = checked(index + items.Count);
             var newCount = checked(Count + items.Count);
@@ -150,8 +154,6 @@ namespace IharBury.Algorithms
         {
             if (items == null)
                 throw new ArgumentNullException(nameof(items));
-            if (items.Count == 0)
-                return;
 
             var newCount = checked(Count + items.Count);
             EnsureCapacity(newCount);
@@ -165,7 +167,7 @@ namespace IharBury.Algorithms
             Count = newCount;
         }
 
-        private void EnsureCapacity(long capacity)
+        public void EnsureCapacity(long capacity)
         {
             if (capacity < 0)
                 throw new ArgumentException("Capacity is negative.", nameof(capacity));
