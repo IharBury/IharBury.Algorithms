@@ -11,6 +11,7 @@ namespace IharBury.Algorithms
 
         private readonly List<List<T>> pages;
         private readonly int pageSize;
+        private long capacityLeft;
 
         public LargeGrowingArray(
             long initialCapacity = 0,
@@ -22,6 +23,7 @@ namespace IharBury.Algorithms
                 throw new ArgumentOutOfRangeException(nameof(pageSize));
 
             this.pageSize = pageSize;
+            capacityLeft = initialCapacity;
 
             var pageCount = checked((int)initialCapacity.GetPageCount(pageSize));
             var lastPageSize = initialCapacity.GetLastPageSize(pageSize);
@@ -49,9 +51,11 @@ namespace IharBury.Algorithms
         public void Add(T item)
         {
             var newCount = checked(Count + 1);
-            EnsureMinCapacity(newCount);
+            if (capacityLeft == 0)
+                EnsureMinCapacity(newCount);
             pages[checked((int)Count.GetPageIndex(pageSize))].Add(item);
             Count = newCount;
+            capacityLeft--;
         }
 
         public void AddAll(IEnumerable<T> items)
@@ -67,6 +71,7 @@ namespace IharBury.Algorithms
         {
             foreach (var page in pages)
                 page.Clear();
+            capacityLeft += Count;
             Count = 0;
         }
 
@@ -93,12 +98,18 @@ namespace IharBury.Algorithms
             }
 
             Count = newCount;
+            capacityLeft += count;
         }
 
         public void EnsureMinCapacity(long capacity)
         {
             if (capacity < 0)
                 throw new ArgumentOutOfRangeException(nameof(capacity));
+
+            if (capacity <= Count + capacityLeft)
+                return;
+            if (capacity == long.MaxValue)
+                throw new OutOfMemoryException();
 
             var requiredPageCount = checked((int)capacity.GetPageCount(pageSize));
             if (requiredPageCount > pages.Capacity)
@@ -115,6 +126,7 @@ namespace IharBury.Algorithms
                 pages.Add(new List<T>(capacity.GetLastPageSize(pageSize)));
             if (pages.Count > 0)
                 EnsurePageCapacity(pages[pages.Count - 1], capacity.GetLastPageSize(pageSize));
+            capacityLeft = capacity - Count;
         }
 
         private void EnsurePageCapacity(List<T> page, int capacity)
