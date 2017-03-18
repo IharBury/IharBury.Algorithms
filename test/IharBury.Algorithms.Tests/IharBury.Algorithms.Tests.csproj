@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="AngularCoordinateInt32Tests.cs" />
     <Compile Include="DictionaryExtensionsTests.cs" />
+    <Compile Include="EnumerableExtensionsTests.cs" />
     <Compile Include="ExtremalCombinatoricsTests.cs" />
     <Compile Include="LargeGrowingArrayInt4Tests.cs" />
     <Compile Include="LargeGrowingArrayInt2Tests.cs" />
