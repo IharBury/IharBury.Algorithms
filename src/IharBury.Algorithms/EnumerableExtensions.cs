@@ -321,5 +321,81 @@ namespace IharBury.Algorithms
 
             return items.GetRunningSum(initialSum, (sum, item) => unchecked(sum + item));
         }
+
+        /// <summary>
+        /// Returns <see cref="Optional{T}"/> for the max item in a sequence
+        /// or <see cref="Optional{T}.None"/> if the sequence is empty.
+        /// </summary>
+        /// <param name="items">The sequence.</param>
+        public static Optional<int> MaxOptional(this IEnumerable<int> items)
+        {
+            if (items == null)
+                throw new ArgumentNullException(nameof(items));
+
+            var max = Optional<int>.None;
+
+            foreach (var item in items)
+                if (!max.HasValue || (max.Value < item))
+                    max = item;
+
+            return max;
+        }
+
+        /// <summary>
+        /// Returns <see cref="Optional{T}"/> for the min item in a sequence
+        /// or <see cref="Optional{T}.None"/> if the sequence is empty.
+        /// </summary>
+        /// <param name="items">The sequence.</param>
+        public static Optional<int> MinOptional(this IEnumerable<int> items)
+        {
+            if (items == null)
+                throw new ArgumentNullException(nameof(items));
+
+            var min = Optional<int>.None;
+
+            foreach (var item in items)
+                if (!min.HasValue || (min.Value > item))
+                    min = item;
+
+            return min;
+        }
+
+        /// <summary>
+        /// Returns <see cref="Optional{T}"/> for the max item in a sequence
+        /// or <see cref="Optional{T}.None"/> if the sequence is empty.
+        /// </summary>
+        /// <param name="items">The sequence.</param>
+        public static Optional<long> MaxOptional(this IEnumerable<long> items)
+        {
+            if (items == null)
+                throw new ArgumentNullException(nameof(items));
+
+            var max = Optional<long>.None;
+
+            foreach (var item in items)
+                if (!max.HasValue || (max.Value < item))
+                    max = item;
+
+            return max;
+        }
+
+        /// <summary>
+        /// Returns <see cref="Optional{T}"/> for the min item in a sequence
+        /// or <see cref="Optional{T}.None"/> if the sequence is empty.
+        /// </summary>
+        /// <param name="items">The sequence.</param>
+        public static Optional<long> MinOptional(this IEnumerable<long> items)
+        {
+            if (items == null)
+                throw new ArgumentNullException(nameof(items));
+
+            var min = Optional<long>.None;
+
+            foreach (var item in items)
+                if (!min.HasValue || (min.Value > item))
+                    min = item;
+
+            return min;
+        }
     }
 }

@@ -259,5 +259,59 @@ namespace IharBury.Algorithms.Tests
                 Assert.Throws<OverflowException>(() => items.GetRunningSumChecked().ToList());
             }
         }
+
+        public sealed class WhenGettingMaxOptional
+        {
+            [Fact]
+            public void WhenThereAreInt32ValuesItShouldFindMax()
+            {
+                Assert.Equal(Optional.From(31), new[] { 1, 31, 5 }.MaxOptional());
+            }
+
+            [Fact]
+            public void WhenThereAreNoInt32ValuesItShouldReturnNone()
+            {
+                Assert.Equal(Optional<int>.None, new int[] { }.MaxOptional());
+            }
+
+            [Fact]
+            public void WhenThereAreInt64ValuesItShouldFindMax()
+            {
+                Assert.Equal(Optional.From(31L), new long[] { 1, 31, 5 }.MaxOptional());
+            }
+
+            [Fact]
+            public void WhenThereAreNoInt64ValuesItShouldReturnNone()
+            {
+                Assert.Equal(Optional<long>.None, new long[] { }.MaxOptional());
+            }
+        }
+
+        public sealed class WhenGettingMinOptional
+        {
+            [Fact]
+            public void WhenThereAreInt32ValuesItShouldFindMin()
+            {
+                Assert.Equal(Optional.From(1), new[] { 1, 31, 5 }.MinOptional());
+            }
+
+            [Fact]
+            public void WhenThereAreNoInt32ValuesItShouldReturnNone()
+            {
+                Assert.Equal(Optional<int>.None, new int[] { }.MinOptional());
+            }
+
+            [Fact]
+            public void WhenThereAreInt64ValuesItShouldFindMin()
+            {
+                Assert.Equal(Optional.From(1L), new long[] { 1, 31, 5 }.MinOptional());
+            }
+
+            [Fact]
+            public void WhenThereAreNoInt64ValuesItShouldReturnNone()
+            {
+                Assert.Equal(Optional<long>.None, new long[] { }.MinOptional());
+            }
+        }
     }
 }
