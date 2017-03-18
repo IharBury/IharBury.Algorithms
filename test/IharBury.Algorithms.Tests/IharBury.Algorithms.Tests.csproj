@@ -76,6 +76,7 @@
     <Compile Include="Line2DInt16Tests.cs" />
     <Compile Include="Line2DInt32Tests.cs" />
     <Compile Include="NumberExtensionsTests.cs" />
+    <Compile Include="OptionalTests.cs" />
     <Compile Include="Point2DInt16Tests.cs" />
     <Compile Include="Point2DInt32Tests.cs" />
     <Compile Include="PrimeGeneratorInt32Tests.cs" />
