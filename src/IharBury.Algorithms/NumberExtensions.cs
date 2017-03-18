@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 
+using static System.Math;
+
 namespace IharBury.Algorithms
 {
     public static class NumberExtensions
@@ -41,41 +43,157 @@ namespace IharBury.Algorithms
             return checked(value1 / value1.Gcd(value2) * value2);
         }
 
-        public static int ButMax(this int value1, int value2) => Math.Min(value1, value2);
+        /// <summary>
+        /// Limits the given value to be not greater than the given max value.
+        /// </summary>
+        /// <param name="limitedValue">The value to be limited.</param>
+        /// <param name="maxLimit">The max limit.</param>
+        /// <returns>The value if it does not violate the limit, otherwise the limit.</returns>
+        public static int ButMax(this int limitedValue, int maxLimit) => Min(limitedValue, maxLimit);
 
-        public static int ButMax(this int value1, int value2, int value3) => value1.ButMax(value2.ButMax(value3));
+        /// <summary>
+        /// Limits the given value to be not greater than the given max values.
+        /// </summary>
+        /// <param name="limitedValue">The value to be limited.</param>
+        /// <param name="maxLimit1">One of the max limits.</param>
+        /// <param name="maxLimit2">One of the max limits.</param>
+        /// <returns>The value if it does not violate the limits, otherwise the min of the limits.</returns>
+        public static int ButMax(this int limitedValue, int maxLimit1, int maxLimit2) =>
+            limitedValue.ButMax(maxLimit1.ButMax(maxLimit2));
 
-        public static int ButMax(this int value1, int value2, int value3, int value4) =>
-            value1.ButMax(value2.ButMax(value3.ButMax(value4)));
+        /// <summary>
+        /// Limits the given value to be not greater than the given max values.
+        /// </summary>
+        /// <param name="limitedValue">The value to be limited.</param>
+        /// <param name="maxLimit1">One of the max limits.</param>
+        /// <param name="maxLimit2">One of the max limits.</param>
+        /// <param name="maxLimit3">One of the max limits.</param>
+        /// <returns>The value if it does not violate the limits, otherwise the min of the limits.</returns>
+        public static int ButMax(this int limitedValue, int maxLimit1, int maxLimit2, int maxLimit3) =>
+            limitedValue.ButMax(maxLimit1.ButMax(maxLimit2.ButMax(maxLimit3)));
 
-        public static int ButMax(this int value1, params int[] otherValues) => new[] { value1 }.Concat(otherValues).Min();
+        /// <summary>
+        /// Limits the given value to be not greater than the given max values.
+        /// </summary>
+        /// <param name="limitedValue">The value to be limited.</param>
+        /// <param name="maxLimits">Zero or more max limits. Cannot be null.</param>
+        /// <returns>The value if it does not violate the limits, otherwise the min of the limits.</returns>
+        public static int ButMax(this int limitedValue, params int[] maxLimits) =>
+            new[] { limitedValue }.Concat(maxLimits).Min();
 
-        public static int ButMin(this int value1, int value2) => Math.Max(value1, value2);
+        /// <summary>
+        /// Limits the given value to be not less than the given min value.
+        /// </summary>
+        /// <param name="limitedValue">The value to be limited.</param>
+        /// <param name="minLimit">The min limit.</param>
+        /// <returns>The value if it does not violate the limit, otherwise the limit.</returns>
+        public static int ButMin(this int limitedValue, int minLimit) => Max(limitedValue, minLimit);
 
-        public static int ButMin(this int value1, int value2, int value3) => value1.ButMin(value2.ButMin(value3));
+        /// <summary>
+        /// Limits the given value to be not less than the given min values.
+        /// </summary>
+        /// <param name="limitedValue">The value to be limited.</param>
+        /// <param name="minLimit1">One of the min limits.</param>
+        /// <param name="minLimit2">One of the min limits.</param>
+        /// <returns>The value if it does not violate the limits, otherwise the max of the limits.</returns>
+        public static int ButMin(this int limitedValue, int minLimit1, int minLimit2) =>
+            limitedValue.ButMin(minLimit1.ButMin(minLimit2));
 
-        public static int ButMin(this int value1, int value2, int value3, int value4) =>
-            value1.ButMin(value2.ButMin(value3.ButMin(value4)));
+        /// <summary>
+        /// Limits the given value to be not less than the given min values.
+        /// </summary>
+        /// <param name="limitedValue">The value to be limited.</param>
+        /// <param name="minLimit1">One of the min limits.</param>
+        /// <param name="minLimit2">One of the min limits.</param>
+        /// <param name="minLimit3">One of the min limits.</param>
+        /// <returns>The value if it does not violate the limits, otherwise the max of the limits.</returns>
+        public static int ButMin(this int limitedValue, int minLimit1, int minLimit2, int minLimit3) =>
+            limitedValue.ButMin(minLimit1.ButMin(minLimit2.ButMin(minLimit3)));
 
-        public static int ButMin(this int value1, params int[] otherValues) => new[] { value1 }.Concat(otherValues).Max();
+        /// <summary>
+        /// Limits the given value to be not less than the given min values.
+        /// </summary>
+        /// <param name="limitedValue">The value to be limited.</param>
+        /// <param name="minLimits">Zero or more min limits. Cannot be null.</param>
+        /// <returns>The value if it does not violate the limits, otherwise the max of the limits.</returns>
+        public static int ButMin(this int limitedValue, params int[] minLimits) =>
+            new[] { limitedValue }.Concat(minLimits).Max();
 
-        public static long ButMax(this long value1, long value2) => Math.Min(value1, value2);
+        /// <summary>
+        /// Limits the given value to be not greater than the given max value.
+        /// </summary>
+        /// <param name="limitedValue">The value to be limited.</param>
+        /// <param name="maxLimit">The max limit.</param>
+        /// <returns>The value if it does not violate the limit, otherwise the limit.</returns>
+        public static long ButMax(this long limitedValue, long maxLimit) => Min(limitedValue, maxLimit);
 
-        public static long ButMax(this long value1, long value2, long value3) => value1.ButMax(value2.ButMax(value3));
+        /// <summary>
+        /// Limits the given value to be not greater than the given max values.
+        /// </summary>
+        /// <param name="limitedValue">The value to be limited.</param>
+        /// <param name="maxLimit1">One of the max limits.</param>
+        /// <param name="maxLimit2">One of the max limits.</param>
+        /// <returns>The value if it does not violate the limits, otherwise the min of the limits.</returns>
+        public static long ButMax(this long limitedValue, long maxLimit1, long maxLimit2) =>
+            limitedValue.ButMax(maxLimit1.ButMax(maxLimit2));
 
-        public static long ButMax(this long value1, long value2, long value3, long value4) => 
-            value1.ButMax(value2.ButMax(value3.ButMax(value4)));
+        /// <summary>
+        /// Limits the given value to be not greater than the given max values.
+        /// </summary>
+        /// <param name="limitedValue">The value to be limited.</param>
+        /// <param name="maxLimit1">One of the max limits.</param>
+        /// <param name="maxLimit2">One of the max limits.</param>
+        /// <param name="maxLimit3">One of the max limits.</param>
+        /// <returns>The value if it does not violate the limits, otherwise the min of the limits.</returns>
+        public static long ButMax(this long limitedValue, long maxLimit1, long maxLimit2, long maxLimit3) => 
+            limitedValue.ButMax(maxLimit1.ButMax(maxLimit2.ButMax(maxLimit3)));
 
-        public static long ButMax(this long value1, params long[] otherValues) => new[] { value1 }.Concat(otherValues).Min();
+        /// <summary>
+        /// Limits the given value to be not greater than the given max values.
+        /// </summary>
+        /// <param name="limitedValue">The value to be limited.</param>
+        /// <param name="maxLimits">Zero or more max limits. Cannot be null.</param>
+        /// <returns>The value if it does not violate the limits, otherwise the min of the limits.</returns>
+        public static long ButMax(this long limitedValue, params long[] maxLimits) =>
+            new[] { limitedValue }.Concat(maxLimits).Min();
 
-        public static long ButMin(this long value1, long value2) => Math.Max(value1, value2);
+        /// <summary>
+        /// Limits the given value to be not less than the given min value.
+        /// </summary>
+        /// <param name="limitedValue">The value to be limited.</param>
+        /// <param name="minLimit">The min limit.</param>
+        /// <returns>The value if it does not violate the limit, otherwise the limit.</returns>
+        public static long ButMin(this long limitedValue, long minLimit) => Max(limitedValue, minLimit);
 
-        public static long ButMin(this long value1, long value2, long value3) => value1.ButMin(value2.ButMin(value3));
+        /// <summary>
+        /// Limits the given value to be not less than the given min values.
+        /// </summary>
+        /// <param name="limitedValue">The value to be limited.</param>
+        /// <param name="minLimit1">One of the min limits.</param>
+        /// <param name="minLimit2">One of the min limits.</param>
+        /// <returns>The value if it does not violate the limits, otherwise the max of the limits.</returns>
+        public static long ButMin(this long limitedValue, long minLimit1, long minLimit2) =>
+            limitedValue.ButMin(minLimit1.ButMin(minLimit2));
 
-        public static long ButMin(this long value1, long value2, long value3, long value4) => 
-            value1.ButMin(value2.ButMin(value3.ButMin(value4)));
+        /// <summary>
+        /// Limits the given value to be not less than the given min values.
+        /// </summary>
+        /// <param name="limitedValue">The value to be limited.</param>
+        /// <param name="minLimit1">One of the min limits.</param>
+        /// <param name="minLimit2">One of the min limits.</param>
+        /// <param name="minLimit3">One of the min limits.</param>
+        /// <returns>The value if it does not violate the limits, otherwise the max of the limits.</returns>
+        public static long ButMin(this long limitedValue, long minLimit1, long minLimit2, long minLimit3) => 
+            limitedValue.ButMin(minLimit1.ButMin(minLimit2.ButMin(minLimit3)));
 
-        public static long ButMin(this long value1, params long[] otherValues) => new[] { value1 }.Concat(otherValues).Max();
+        /// <summary>
+        /// Limits the given value to be not less than the given min values.
+        /// </summary>
+        /// <param name="limitedValue">The value to be limited.</param>
+        /// <param name="minLimits">Zero or more min limits. Cannot be null.</param>
+        /// <returns>The value if it does not violate the limits, otherwise the max of the limits.</returns>
+        public static long ButMin(this long limitedValue, params long[] minLimits) =>
+            new[] { limitedValue }.Concat(minLimits).Max();
 
         public static long DivideAndRoundUp(this long value1, long value2)
         {
