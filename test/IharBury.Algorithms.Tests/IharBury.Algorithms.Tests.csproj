@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IharBury.Algorithms.Tests</RootNamespace>
     <AssemblyName>IharBury.Algorithms.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -45,6 +45,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\..\packages\xunit.abstractions.2.0.1\lib\net35\xunit.abstractions.dll</HintPath>
     </Reference>
@@ -73,6 +76,8 @@
     <Compile Include="ExtremalCombinatoricsTests.cs" />
     <Compile Include="GoogleCodeJam\Year2008\Qualification\ProblemA\Tests.cs" />
     <Compile Include="GoogleCodeJam\Year2008\Qualification\ProblemA\Solution.cs" />
+    <Compile Include="GoogleCodeJam\Year2008\Qualification\ProblemB\Solution.cs" />
+    <Compile Include="GoogleCodeJam\Year2008\Qualification\ProblemB\Tests.cs" />
     <Compile Include="LargeGrowingArrayInt4Tests.cs" />
     <Compile Include="LargeGrowingArrayInt2Tests.cs" />
     <Compile Include="LargeGrowingArrayTests.cs" />
@@ -108,6 +113,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="GoogleCodeJam\Year2008\Qualification\ProblemA\LargeOutput.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GoogleCodeJam\Year2008\Qualification\ProblemB\SmallInput.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GoogleCodeJam\Year2008\Qualification\ProblemB\SmallOutput.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GoogleCodeJam\Year2008\Qualification\ProblemB\LargeInput.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GoogleCodeJam\Year2008\Qualification\ProblemB\LargeOutput.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
