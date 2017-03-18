@@ -71,6 +71,8 @@
     <Compile Include="DictionaryExtensionsTests.cs" />
     <Compile Include="EnumerableExtensionsTests.cs" />
     <Compile Include="ExtremalCombinatoricsTests.cs" />
+    <Compile Include="GoogleCodeJam\Year2008\Qualification\ProblemA\Tests.cs" />
+    <Compile Include="GoogleCodeJam\Year2008\Qualification\ProblemA\Solution.cs" />
     <Compile Include="LargeGrowingArrayInt4Tests.cs" />
     <Compile Include="LargeGrowingArrayInt2Tests.cs" />
     <Compile Include="LargeGrowingArrayTests.cs" />
@@ -94,6 +96,18 @@
       <Project>{b2355313-52ad-4e33-8462-9f27e01fdfe6}</Project>
       <Name>IharBury.Algorithms</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GoogleCodeJam\Year2008\Qualification\ProblemA\SmallInput.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GoogleCodeJam\Year2008\Qualification\ProblemA\SmallOutput.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GoogleCodeJam\Year2008\Qualification\ProblemA\LargeInput.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GoogleCodeJam\Year2008\Qualification\ProblemA\LargeOutput.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
