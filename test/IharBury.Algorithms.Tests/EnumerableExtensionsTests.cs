@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -126,6 +127,136 @@ namespace IharBury.Algorithms.Tests
                     .ToList();
                 Assert.Equal(1, groups.Count);
                 Assert.True(groups.Single().SequenceEqual(new[] { 1, 2, 3 }));
+            }
+        }
+
+        public sealed class WhenGettingRunningSumWithValueSelector
+        {
+            [Fact]
+            public void WhenSumsFitToInt32ItWorksForInt32Unchecked()
+            {
+                var items = new[] { 1, 2, 4, 12, 1, -5, 4 };
+                var runningSum = items.GetRunningSumUnchecked(item => item, 2).ToList();
+                Assert.True(runningSum.SequenceEqual(new[] { 3, 5, 9, 21, 22, 17, 21 }));
+            }
+
+            [Fact]
+            public void WhenSumsFitToInt32ItWorksForInt32Checked()
+            {
+                var items = new[] { 1, 2, 4, 12, 1, -5, 4 };
+                var runningSum = items.GetRunningSumChecked(item => item, 2).ToList();
+                Assert.True(runningSum.SequenceEqual(new[] { 3, 5, 9, 21, 22, 17, 21 }));
+            }
+
+            [Fact]
+            public void WhenSumsDoNotFitToInt32TheyRoundTripForInt32Unchecked()
+            {
+                var items = new[] { 1, int.MaxValue, -1 };
+                var runningSum = items.GetRunningSumUnchecked(item => item).ToList();
+                Assert.True(runningSum.SequenceEqual(new[] { 1, int.MinValue, int.MaxValue }));
+            }
+
+            [Fact]
+            public void WhenSumsDoNotFitToInt32ItThrowsForInt32Checked()
+            {
+                var items = new[] { 1, int.MaxValue };
+                Assert.Throws<OverflowException>(() => items.GetRunningSumChecked(item => item).ToList());
+            }
+
+            [Fact]
+            public void WhenSumsFitToInt64ItWorksForInt64Unchecked()
+            {
+                var items = new long[] { 1, 2, 4, 12, 1, -5, 4 };
+                var runningSum = items.GetRunningSumUnchecked(item => item, 2).ToList();
+                Assert.True(runningSum.SequenceEqual(new long[] { 3, 5, 9, 21, 22, 17, 21 }));
+            }
+
+            [Fact]
+            public void WhenSumsFitToInt64ItWorksForInt64Checked()
+            {
+                var items = new long[] { 1, 2, 4, 12, 1, -5, 4 };
+                var runningSum = items.GetRunningSumChecked(item => item, 2).ToList();
+                Assert.True(runningSum.SequenceEqual(new long[] { 3, 5, 9, 21, 22, 17, 21 }));
+            }
+
+            [Fact]
+            public void WhenSumsDoNotFitToInt64TheyRoundTripForInt64Unchecked()
+            {
+                var items = new[] { 1, long.MaxValue, -1 };
+                var runningSum = items.GetRunningSumUnchecked(item => item).ToList();
+                Assert.True(runningSum.SequenceEqual(new long[] { 1, long.MinValue, long.MaxValue }));
+            }
+
+            [Fact]
+            public void WhenSumsDoNotFitToInt64ItThrowsForInt64Checked()
+            {
+                var items = new long[] { 1, long.MaxValue };
+                Assert.Throws<OverflowException>(() => items.GetRunningSumChecked(item => item).ToList());
+            }
+        }
+
+        public sealed class WhenGettingRunningSumWithoutValueSelector
+        {
+            [Fact]
+            public void WhenSumsFitToInt32ItWorksForInt32Unchecked()
+            {
+                var items = new[] { 1, 2, 4, 12, 1, -5, 4 };
+                var runningSum = items.GetRunningSumUnchecked(2).ToList();
+                Assert.True(runningSum.SequenceEqual(new[] { 3, 5, 9, 21, 22, 17, 21 }));
+            }
+
+            [Fact]
+            public void WhenSumsFitToInt32ItWorksForInt32Checked()
+            {
+                var items = new[] { 1, 2, 4, 12, 1, -5, 4 };
+                var runningSum = items.GetRunningSumChecked(2).ToList();
+                Assert.True(runningSum.SequenceEqual(new[] { 3, 5, 9, 21, 22, 17, 21 }));
+            }
+
+            [Fact]
+            public void WhenSumsDoNotFitToInt32TheyRoundTripForInt32Unchecked()
+            {
+                var items = new[] { 1, int.MaxValue, -1 };
+                var runningSum = items.GetRunningSumUnchecked().ToList();
+                Assert.True(runningSum.SequenceEqual(new[] { 1, int.MinValue, int.MaxValue }));
+            }
+
+            [Fact]
+            public void WhenSumsDoNotFitToInt32ItThrowsForInt32Checked()
+            {
+                var items = new[] { 1, int.MaxValue };
+                Assert.Throws<OverflowException>(() => items.GetRunningSumChecked().ToList());
+            }
+
+            [Fact]
+            public void WhenSumsFitToInt64ItWorksForInt64Unchecked()
+            {
+                var items = new long[] { 1, 2, 4, 12, 1, -5, 4 };
+                var runningSum = items.GetRunningSumUnchecked(2).ToList();
+                Assert.True(runningSum.SequenceEqual(new long[] { 3, 5, 9, 21, 22, 17, 21 }));
+            }
+
+            [Fact]
+            public void WhenSumsFitToInt64ItWorksForInt64Checked()
+            {
+                var items = new long[] { 1, 2, 4, 12, 1, -5, 4 };
+                var runningSum = items.GetRunningSumChecked(2).ToList();
+                Assert.True(runningSum.SequenceEqual(new long[] { 3, 5, 9, 21, 22, 17, 21 }));
+            }
+
+            [Fact]
+            public void WhenSumsDoNotFitToInt64TheyRoundTripForInt64Unchecked()
+            {
+                var items = new[] { 1, long.MaxValue, -1 };
+                var runningSum = items.GetRunningSumUnchecked().ToList();
+                Assert.True(runningSum.SequenceEqual(new long[] { 1, long.MinValue, long.MaxValue }));
+            }
+
+            [Fact]
+            public void WhenSumsDoNotFitToInt64ItThrowsForInt64Checked()
+            {
+                var items = new long[] { 1, long.MaxValue };
+                Assert.Throws<OverflowException>(() => items.GetRunningSumChecked().ToList());
             }
         }
     }
