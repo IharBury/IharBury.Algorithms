@@ -1,0 +1,70 @@
+﻿using System;
+
+using static System.Math;
+
+namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.DoublePrecision
+{
+    /// <summary>
+    /// Represents a square in a two-dimensional Euclidean space
+    /// by two of its opposite vertices with approximate Cartesian coordinates                                                      
+    /// with <see cref="double"/> precision.
+    /// </summary>
+    public struct Square
+    {
+        /// <summary>
+        /// Constructs a new square from its base vertex and the opposite vertex.
+        /// </summary>
+        public Square(Point baseVertex, Point oppositeVertex)
+        {
+            BaseVertex = baseVertex;
+            OppositeVertex = oppositeVertex;
+        }
+
+        /// <summary>
+        /// One of the vertices of the square.
+        /// </summary>
+        public Point BaseVertex { get; }
+
+        /// <summary>
+        /// The vertex opposite to <see cref="BaseVertex"/>.
+        /// </summary>
+        public Point OppositeVertex { get; }
+
+        /// <summary>
+        /// Calculates approximate squared length of the diagonals.
+        /// </summary>
+        public double DiagonalSquaredLength => BaseVertex.GetSquaredDistanceTo(OppositeVertex);
+
+        /// <summary>
+        /// Calculates approximate length of the diagonals.
+        /// Less optimal than <see cref="DiagonalSquaredLength"/>.
+        /// </summary>
+        public double DiagonalLength => Sqrt(DiagonalSquaredLength);
+
+        /// <summary>
+        /// Calculates approximate squared length of the sides.
+        /// </summary>
+        public double SideSquaredLength => DiagonalSquaredLength / 2;
+
+        /// <summary>
+        /// Calculates approximate length of the sides.
+        /// Less optimal than <see cref="SideSquaredLength"/>.
+        /// </summary>
+        public double SideLength => Sqrt(SideSquaredLength);
+
+        /// <summary>
+        /// Calculates approximate area.
+        /// </summary>
+        public double Area => SideSquaredLength;
+
+        /// <summary>
+        /// Diagonal that contains the base vertex.
+        /// </summary>
+        public LineSegment BaseDiagonal => new LineSegment(BaseVertex, OppositeVertex);
+
+        /// <summary>
+        /// The center point.
+        /// </summary>
+        public Point Center => BaseDiagonal.Middle;
+    }
+}

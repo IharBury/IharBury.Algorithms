@@ -74,6 +74,9 @@
     <Compile Include="DictionaryExtensionsTests.cs" />
     <Compile Include="EnumerableExtensionsTests.cs" />
     <Compile Include="ExtremalCombinatoricsTests.cs" />
+    <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\PointSpecs.cs" />
+    <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\LineSegmentSpecs.cs" />
+    <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\SquareSpecs.cs" />
     <Compile Include="GoogleCodeJam\Year2008\Qualification\ProblemA\Tests.cs" />
     <Compile Include="GoogleCodeJam\Year2008\Qualification\ProblemA\Solution.cs" />
     <Compile Include="GoogleCodeJam\Year2008\Qualification\ProblemB\Solution.cs" />
