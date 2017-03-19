@@ -83,7 +83,8 @@
     <Compile Include="LargeGrowingArrayTests.cs" />
     <Compile Include="Geometry\Euclidean\TwoDimensional\Precise\Int16Precision\LineTests.cs" />
     <Compile Include="Geometry\Euclidean\TwoDimensional\Precise\Int32Precision\LineTests.cs" />
-    <Compile Include="NumberExtensionsTests.cs" />
+    <Compile Include="Int64ExtensionsTests.cs" />
+    <Compile Include="Int32ExtensionsTests.cs" />
     <Compile Include="OptionalTests.cs" />
     <Compile Include="Geometry\Euclidean\TwoDimensional\Precise\Int16Precision\PointTests.cs" />
     <Compile Include="Geometry\Euclidean\TwoDimensional\Precise\Int32Precision\PointTests.cs" />
