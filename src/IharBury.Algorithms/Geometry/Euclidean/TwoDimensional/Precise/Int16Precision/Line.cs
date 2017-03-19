@@ -1,33 +1,33 @@
 ﻿using System;
 
-namespace IharBury.Algorithms
+namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Precise.Int16Precision
 {
-    public struct Line2DInt16 : IEquatable<Line2DInt16>
+    public struct Line : IEquatable<Line>
     {
-        public static bool operator ==(Line2DInt16 line1, Line2DInt16 line2)
+        public static bool operator ==(Line line1, Line line2)
         {
             return line1.Equals(line2);
         }
 
-        public static bool operator !=(Line2DInt16 line1, Line2DInt16 line2)
+        public static bool operator !=(Line line1, Line line2)
         {
             return !(line1 == line2);
         }
 
-        public Line2DInt16(Point2DInt16 point1, Point2DInt16 point2)
+        public Line(Point point1, Point point2)
         {
             Point1 = point1;
             Point2 = point2;
         }
 
-        public Point2DInt16 Point1 { get; }
-        public Point2DInt16 Point2 { get; }
+        public Point Point1 { get; }
+        public Point Point2 { get; }
 
         public bool IsValid => Point1 != Point2;
 
         public override string ToString() => IsValid ? $"({Point1}, {Point2})" : "not a line";
 
-        public bool HasPoint(Point2DInt16 point)
+        public bool HasPoint(Point point)
         {
             checked
             {
@@ -40,7 +40,7 @@ namespace IharBury.Algorithms
             }
         }
 
-        public bool Equals(Line2DInt16 other)
+        public bool Equals(Line other)
         {
             if ((other.Point1 == Point1) && (other.Point2 == Point2))
                 return true;
@@ -49,7 +49,7 @@ namespace IharBury.Algorithms
             return HasPoint(other.Point1) && HasPoint(other.Point2);
         }
 
-        public override bool Equals(object obj) => (obj is Line2DInt16) && Equals((Line2DInt16)obj);
+        public override bool Equals(object obj) => (obj is Line) && Equals((Line)obj);
 
         public override int GetHashCode()
         {

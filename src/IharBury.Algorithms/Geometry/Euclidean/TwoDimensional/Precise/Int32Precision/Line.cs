@@ -1,34 +1,34 @@
 ﻿using System;
 using System.Numerics;
 
-namespace IharBury.Algorithms
+namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Precise.Int32Precision
 {
-    public struct Line2DInt32 : IEquatable<Line2DInt32>
+    public struct Line : IEquatable<Line>
     {
-        public static bool operator ==(Line2DInt32 line1, Line2DInt32 line2)
+        public static bool operator ==(Line line1, Line line2)
         {
             return line1.Equals(line2);
         }
 
-        public static bool operator !=(Line2DInt32 line1, Line2DInt32 line2)
+        public static bool operator !=(Line line1, Line line2)
         {
             return !(line1 == line2);
         }
 
-        public Line2DInt32(Point2DInt32 point1, Point2DInt32 point2)
+        public Line(Point point1, Point point2)
         {
             Point1 = point1;
             Point2 = point2;
         }
 
-        public Point2DInt32 Point1 { get; }
-        public Point2DInt32 Point2 { get; }
+        public Point Point1 { get; }
+        public Point Point2 { get; }
 
         public bool IsValid => Point1 != Point2;
 
         public override string ToString() => IsValid ? $"({Point1}, {Point2})" : "not a line";
 
-        public bool HasPoint(Point2DInt32 point)
+        public bool HasPoint(Point point)
         {
             checked
             {
@@ -41,7 +41,7 @@ namespace IharBury.Algorithms
             }
         }
 
-        public bool Equals(Line2DInt32 other)
+        public bool Equals(Line other)
         {
             if ((other.Point1 == Point1) && (other.Point2 == Point2))
                 return true;
@@ -50,7 +50,7 @@ namespace IharBury.Algorithms
             return HasPoint(other.Point1) && HasPoint(other.Point2);
         }
 
-        public override bool Equals(object obj) => (obj is Line2DInt32) && Equals((Line2DInt32)obj);
+        public override bool Equals(object obj) => (obj is Line line) && Equals(line);
 
         public override int GetHashCode()
         {
@@ -73,9 +73,9 @@ namespace IharBury.Algorithms
                 unchecked
                 {
                     var result = xPerYFactor.GetHashCode();
-                    result = (result * 37987) ^ yPerXFactor.GetHashCode();
-                    result = (result * 37987) ^ xWhenYIsZero.GetHashCode();
-                    result = (result * 37987) ^ yWhenXIsZero.GetHashCode();
+                    result = (result * 37987) + yPerXFactor.GetHashCode();
+                    result = (result * 37987) + xWhenYIsZero.GetHashCode();
+                    result = (result * 37987) + yWhenXIsZero.GetHashCode();
                     return result;
                 }
             }

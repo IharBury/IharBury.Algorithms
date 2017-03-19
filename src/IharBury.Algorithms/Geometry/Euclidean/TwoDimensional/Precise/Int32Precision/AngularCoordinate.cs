@@ -1,45 +1,45 @@
 ﻿using System;
 
-namespace IharBury.Algorithms
+namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Precise.Int32Precision
 {
-    public struct AngularCoordinateInt32 : IEquatable<AngularCoordinateInt32>, IComparable<AngularCoordinateInt32>
+    public struct AngularCoordinate : IEquatable<AngularCoordinate>, IComparable<AngularCoordinate>
     {
-        public static bool operator ==(AngularCoordinateInt32 coordinate1, AngularCoordinateInt32 coordinate2)
+        public static bool operator ==(AngularCoordinate coordinate1, AngularCoordinate coordinate2)
         {
             return coordinate1.Equals(coordinate2);
         }
 
-        public static bool operator !=(AngularCoordinateInt32 coordinate1, AngularCoordinateInt32 coordinate2)
+        public static bool operator !=(AngularCoordinate coordinate1, AngularCoordinate coordinate2)
         {
             return !(coordinate1 == coordinate2);
         }
 
-        public static bool operator <(AngularCoordinateInt32 coordinate1, AngularCoordinateInt32 coordinate2)
+        public static bool operator <(AngularCoordinate coordinate1, AngularCoordinate coordinate2)
         {
             return coordinate1.CompareTo(coordinate2) < 0;
         }
 
-        public static bool operator <=(AngularCoordinateInt32 coordinate1, AngularCoordinateInt32 coordinate2)
+        public static bool operator <=(AngularCoordinate coordinate1, AngularCoordinate coordinate2)
         {
             return coordinate1.CompareTo(coordinate2) <= 0;
         }
 
-        public static bool operator >(AngularCoordinateInt32 coordinate1, AngularCoordinateInt32 coordinate2)
+        public static bool operator >(AngularCoordinate coordinate1, AngularCoordinate coordinate2)
         {
             return coordinate1.CompareTo(coordinate2) > 0;
         }
 
-        public static bool operator >=(AngularCoordinateInt32 coordinate1, AngularCoordinateInt32 coordinate2)
+        public static bool operator >=(AngularCoordinate coordinate1, AngularCoordinate coordinate2)
         {
             return coordinate1.CompareTo(coordinate2) >= 0;
         }
 
-        public static AngularCoordinateInt32 Zero => new AngularCoordinateInt32(1, 0);
-        public static AngularCoordinateInt32 Quarter => new AngularCoordinateInt32(0, 1);
-        public static AngularCoordinateInt32 Half => new AngularCoordinateInt32(-1, 0);
-        public static AngularCoordinateInt32 ThreeQuarters => new AngularCoordinateInt32(0, -1);
+        public static AngularCoordinate Zero => new AngularCoordinate(1, 0);
+        public static AngularCoordinate Quarter => new AngularCoordinate(0, 1);
+        public static AngularCoordinate Half => new AngularCoordinate(-1, 0);
+        public static AngularCoordinate ThreeQuarters => new AngularCoordinate(0, -1);
 
-        public AngularCoordinateInt32(int x, int y)
+        public AngularCoordinate(int x, int y)
         {
             X = x;
             Y = y;
@@ -50,30 +50,30 @@ namespace IharBury.Algorithms
 
         public bool IsZero => (Y == 0) && (X >= 0);
 
-        public AngularCoordinateInt32? TryGetOpposite()
+        public AngularCoordinate? TryGetOpposite()
         {
             checked
             {
                 var normalized = Normalize();
                 if ((normalized.X == int.MinValue) || (normalized.Y == int.MinValue))
                     return null;
-                return new AngularCoordinateInt32(-normalized.X, -normalized.Y);
+                return new AngularCoordinate(-normalized.X, -normalized.Y);
             }
         }
 
-        public AngularCoordinateInt32 Normalize()
+        public AngularCoordinate Normalize()
         {
             checked
             {
                 if (IsZero)
-                    return new AngularCoordinateInt32(1, 0);
+                    return new AngularCoordinate(1, 0);
 
                 var gcd = X.Gcd(Y);
-                return new AngularCoordinateInt32((int)(X / gcd), (int)(Y / gcd));
+                return new AngularCoordinate((int)(X / gcd), (int)(Y / gcd));
             }
         }
 
-        public bool Equals(AngularCoordinateInt32 other)
+        public bool Equals(AngularCoordinate other)
         {
             checked
             {
@@ -88,7 +88,7 @@ namespace IharBury.Algorithms
 
         public override bool Equals(object obj)
         {
-            return (obj is AngularCoordinateInt32) && Equals((AngularCoordinateInt32)obj);
+            return (obj is AngularCoordinate) && Equals((AngularCoordinate)obj);
         }
 
         public override int GetHashCode()
@@ -102,7 +102,7 @@ namespace IharBury.Algorithms
 
         public override string ToString() => $"({X},{Y})";
 
-        public int CompareTo(AngularCoordinateInt32 other)
+        public int CompareTo(AngularCoordinate other)
         {
             if (Equals(other))
                 return 0;

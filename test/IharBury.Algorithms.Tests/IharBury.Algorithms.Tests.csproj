@@ -70,7 +70,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="AngularCoordinateInt32Tests.cs" />
+    <Compile Include="Geometry\Euclidean\TwoDimensional\Precise\Int32Precision\AngularCoordinateTests.cs" />
     <Compile Include="DictionaryExtensionsTests.cs" />
     <Compile Include="EnumerableExtensionsTests.cs" />
     <Compile Include="ExtremalCombinatoricsTests.cs" />
@@ -81,12 +81,12 @@
     <Compile Include="LargeGrowingArrayInt4Tests.cs" />
     <Compile Include="LargeGrowingArrayInt2Tests.cs" />
     <Compile Include="LargeGrowingArrayTests.cs" />
-    <Compile Include="Line2DInt16Tests.cs" />
-    <Compile Include="Line2DInt32Tests.cs" />
+    <Compile Include="Geometry\Euclidean\TwoDimensional\Precise\Int16Precision\LineTests.cs" />
+    <Compile Include="Geometry\Euclidean\TwoDimensional\Precise\Int32Precision\LineTests.cs" />
     <Compile Include="NumberExtensionsTests.cs" />
     <Compile Include="OptionalTests.cs" />
-    <Compile Include="Point2DInt16Tests.cs" />
-    <Compile Include="Point2DInt32Tests.cs" />
+    <Compile Include="Geometry\Euclidean\TwoDimensional\Precise\Int16Precision\PointTests.cs" />
+    <Compile Include="Geometry\Euclidean\TwoDimensional\Precise\Int32Precision\PointTests.cs" />
     <Compile Include="PrimeGeneratorInt32Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VectorsTests.cs" />
@@ -126,6 +126,7 @@
   <ItemGroup>
     <EmbeddedResource Include="GoogleCodeJam\Year2008\Qualification\ProblemB\LargeOutput.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

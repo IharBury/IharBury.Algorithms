@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Numerics;
 
-namespace IharBury.Algorithms
+namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Precise.Int32Precision
 {
-    public struct Point2DInt32 : IEquatable<Point2DInt32>
+    public struct Point : IEquatable<Point>
     {
-        public static bool operator ==(Point2DInt32 point1, Point2DInt32 point2)
+        public static bool operator ==(Point point1, Point point2)
         {
             return point1.Equals(point2);
         }
 
-        public static bool operator !=(Point2DInt32 point1, Point2DInt32 point2)
+        public static bool operator !=(Point point1, Point point2)
         {
             return !(point1 == point2);
         }
 
-        public Point2DInt32(int x, int y)
+        public Point(int x, int y)
         {
             X = x;
             Y = y;
@@ -24,17 +24,17 @@ namespace IharBury.Algorithms
         public int X { get; }
         public int Y { get; }
 
-        public bool Equals(Point2DInt32 other) => (other.X == X) && (other.Y == Y);
+        public bool Equals(Point other) => (other.X == X) && (other.Y == Y);
 
-        public override bool Equals(object obj) => (obj is Point2DInt32) && Equals((Point2DInt32)obj);
+        public override bool Equals(object obj) => (obj is Point point) && Equals(point);
 
-        public override int GetHashCode() => unchecked((X * 37987) ^ Y);
+        public override int GetHashCode() => unchecked((X * 37987) + Y);
 
         public override string ToString() => $"({X}, {Y})";
 
-        public bool IsAtLine(Line2DInt32 line) => line.HasPoint(this);
+        public bool IsAtLine(Line line) => line.HasPoint(this);
 
-        public bool IsToTheLeftOf(Point2DInt32 backPoint, Point2DInt32 forwardPoint)
+        public bool IsToTheLeftOf(Point backPoint, Point forwardPoint)
         {
             checked
             {
