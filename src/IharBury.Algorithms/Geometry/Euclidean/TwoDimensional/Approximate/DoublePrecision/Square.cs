@@ -84,5 +84,7 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.Doub
         /// Less optimal then <see cref="BaseDiagonal"/>.
         /// </summary>
         public LineSegment AnotherDiagonal => new LineSegment(ClockwiseVertex, AnticlockwiseVertex);
+
+        public override string ToString() => $"({BaseVertex}, {ClockwiseVertex}, {OppositeVertex}, {AnticlockwiseVertex})";
     }
 }
