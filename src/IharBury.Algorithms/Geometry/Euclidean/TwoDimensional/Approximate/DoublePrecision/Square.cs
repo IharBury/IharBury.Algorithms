@@ -66,5 +66,17 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.Doub
         /// The center point.
         /// </summary>
         public Point Center => BaseDiagonal.Middle;
+
+        /// <summary>
+        /// The next vertex clockwise after <see cref="BaseVertex"/>.
+        /// Less optimal than <see cref="BaseVertex"/> and <see cref="OppositeVertex"/>.
+        /// </summary>
+        public Point ClockwiseVertex => new Point(Center.X - Center.Y + BaseVertex.Y, Center.Y + Center.X - BaseVertex.X);
+
+        /// <summary>
+        /// The next vertex anticlockwise after <see cref="BaseVertex"/>.
+        /// Less optimal than <see cref="BaseVertex"/> and <see cref="OppositeVertex"/>.
+        /// </summary>
+        public Point AnticlockwiseVertex => new Point(Center.X + Center.Y - BaseVertex.Y, Center.Y - Center.X + BaseVertex.X);
     }
 }
