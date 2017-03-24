@@ -47,5 +47,37 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
             var lineSegment = new LineSegment(new Point(2, 3), new Point(4, 7));
             Assert.True(lineSegment.Middle.EqualsWithMaxSquaredDistanceError(new Point(3, 5), 0.00001));
         }
+
+
+        [Fact]
+        public void LineSegmentEqualsToItselfWithZeroError()
+        {
+            var lineSegment = new LineSegment(new Point(2.34, 3.634), new Point(6.32, -2.15));
+            Assert.True(lineSegment.EqualsWithMaxSquaredDistanceError(lineSegment, 0));
+        }
+
+        [Fact]
+        public void LineSegmentEqualsToCloseEnoughLineSegmentWithSameEndpointOrderWithTheGivenSquaredDistanceError()
+        {
+            var lineSegment1 = new LineSegment(new Point(2.001, 3.001), new Point(6.001, -2.001));
+            var lineSegment2 = new LineSegment(new Point(2, 3), new Point(6, -2));
+            Assert.True(lineSegment1.EqualsWithMaxSquaredDistanceError(lineSegment2, 0.00001));
+        }
+
+        [Fact]
+        public void LineSegmentEqualsToCloseEnoughLineSegmentWithAnotherEndpointOrderWithTheGivenSquaredDistanceError()
+        {
+            var lineSegment1 = new LineSegment(new Point(2.001, 3.001), new Point(6.001, -2.001));
+            var lineSegment2 = new LineSegment(new Point(6, -2), new Point(2, 3));
+            Assert.True(lineSegment1.EqualsWithMaxSquaredDistanceError(lineSegment2, 0.00001));
+        }
+
+        [Fact]
+        public void LineSegmentDoesNotEqualToFarEnoughLineSegmentWithTheGivenSquaredDistanceError()
+        {
+            var lineSegment1 = new LineSegment(new Point(2.01, 3.01), new Point(6.01, -2.01));
+            var lineSegment2 = new LineSegment(new Point(2, 3), new Point(6, -2));
+            Assert.False(lineSegment1.EqualsWithMaxSquaredDistanceError(lineSegment2, 0.00001));
+        }
     }
 }
