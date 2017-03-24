@@ -60,27 +60,11 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
         }
 
         [Fact]
-        public void BaseDiagonalHasBaseVertexXAsBaseEndpointX()
+        public void BaseDiagonalIsCalculatedCorrectly()
         {
-            Assert.Equal(2, new Square(new Point(2, 3), new Point(4, 7)).BaseDiagonal.BaseEndpoint.X);
-        }
-
-        [Fact]
-        public void BaseDiagonalHasBaseVertexYAsBaseEndpointY()
-        {
-            Assert.Equal(3, new Square(new Point(2, 3), new Point(4, 7)).BaseDiagonal.BaseEndpoint.Y);
-        }
-
-        [Fact]
-        public void BaseDiagonalHasOppositeVertexXAsAnotherEndpointX()
-        {
-            Assert.Equal(4, new Square(new Point(2, 3), new Point(4, 7)).BaseDiagonal.AnotherEndpoint.X);
-        }
-
-        [Fact]
-        public void BaseDiagonalHasOppositeVertexYAsAnotherEndpointY()
-        {
-            Assert.Equal(7, new Square(new Point(2, 3), new Point(4, 7)).BaseDiagonal.AnotherEndpoint.Y);
+            var square = new Square(new Point(2, 3), new Point(4, 7));
+            var expectedBaseDiagonal = new LineSegment(new Point(2, 3), new Point(4, 7));
+            Assert.True(square.BaseDiagonal.EqualsWithMaxSquaredDistanceError(expectedBaseDiagonal, 0.00001));
         }
 
         [Fact]
@@ -102,6 +86,14 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
         {
             var square = new Square(new Point(2, 3), new Point(4, 7));
             Assert.True(square.AnticlockwiseVertex.EqualsWithMaxSquaredDistanceError(new Point(5, 4), 0.00001));
+        }
+
+        [Fact]
+        public void AnotherDiagonalIsCalculatedCorrectly()
+        {
+            var square = new Square(new Point(2, 3), new Point(4, 7));
+            var expectedAnotherDiagonal = new LineSegment(new Point(1, 6), new Point(5, 4));
+            Assert.True(square.AnotherDiagonal.EqualsWithMaxSquaredDistanceError(expectedAnotherDiagonal, 0.00001));
         }
     }
 }

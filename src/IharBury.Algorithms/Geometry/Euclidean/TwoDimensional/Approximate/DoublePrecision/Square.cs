@@ -58,7 +58,7 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.Doub
         public double Area => SideSquaredLength;
 
         /// <summary>
-        /// Diagonal that contains the base vertex.
+        /// Diagonal that contains <see cref="BaseVertex"/>.
         /// </summary>
         public LineSegment BaseDiagonal => new LineSegment(BaseVertex, OppositeVertex);
 
@@ -78,5 +78,11 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.Doub
         /// Less optimal than <see cref="BaseVertex"/> and <see cref="OppositeVertex"/>.
         /// </summary>
         public Point AnticlockwiseVertex => new Point(Center.X + Center.Y - BaseVertex.Y, Center.Y - Center.X + BaseVertex.X);
+
+        /// <summary>
+        /// Diagonal that does not contain <see cref="BaseVertex"/>.
+        /// Less optimal then <see cref="BaseDiagonal"/>.
+        /// </summary>
+        public LineSegment AnotherDiagonal => new LineSegment(ClockwiseVertex, AnticlockwiseVertex);
     }
 }
