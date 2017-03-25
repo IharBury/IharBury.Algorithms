@@ -3,7 +3,7 @@ using Xunit;
 
 namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximate.DoublePrecision
 {
-    public sealed class PointSpecs
+    public sealed class PointTests
     {
         [Fact]
         public void OriginHasZeroX()

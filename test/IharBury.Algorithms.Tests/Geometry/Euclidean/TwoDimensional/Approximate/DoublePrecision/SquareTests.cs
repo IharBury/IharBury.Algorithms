@@ -3,7 +3,7 @@ using Xunit;
 
 namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximate.DoublePrecision
 {
-    public sealed class SquareSpecs
+    public sealed class SquareTests
     {
         [Fact]
         public void ConstructedSquareHasTheGivenBaseVertexX()

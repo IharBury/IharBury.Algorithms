@@ -70,13 +70,14 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\CircleTests.cs" />
     <Compile Include="Geometry\Euclidean\TwoDimensional\Precise\Int32Precision\AngularCoordinateTests.cs" />
     <Compile Include="DictionaryExtensionsTests.cs" />
     <Compile Include="EnumerableExtensionsTests.cs" />
     <Compile Include="ExtremalCombinatoricsTests.cs" />
-    <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\PointSpecs.cs" />
-    <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\LineSegmentSpecs.cs" />
-    <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\SquareSpecs.cs" />
+    <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\PointTests.cs" />
+    <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\LineSegmentTests.cs" />
+    <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\SquareTests.cs" />
     <Compile Include="GoogleCodeJam\Year2008\Qualification\ProblemA\Tests.cs" />
     <Compile Include="GoogleCodeJam\Year2008\Qualification\ProblemA\Solution.cs" />
     <Compile Include="GoogleCodeJam\Year2008\Qualification\ProblemB\Solution.cs" />
