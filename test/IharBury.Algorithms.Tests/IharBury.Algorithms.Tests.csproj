@@ -71,6 +71,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\CircleTests.cs" />
+    <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\TriangleTests.cs" />
     <Compile Include="Geometry\Euclidean\TwoDimensional\Precise\Int32Precision\AngularCoordinateTests.cs" />
     <Compile Include="DictionaryExtensionsTests.cs" />
     <Compile Include="EnumerableExtensionsTests.cs" />
