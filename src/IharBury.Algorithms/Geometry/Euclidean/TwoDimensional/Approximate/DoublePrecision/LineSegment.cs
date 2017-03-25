@@ -53,16 +53,16 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.Doub
         /// with the given max squared distance error.
         /// </summary>
         /// <param name="maxSquaredDistanceError">The max squared distance error. Must be a non-negative finite number.</param>
-        public bool HasSameCoordinatesWithMaxSquaredDistanceError(LineSegment other, double maxSquaredDistanceError)
+        public bool HasSameCoordinatesAs(LineSegment other, double maxSquaredDistanceError)
         {
             if (!maxSquaredDistanceError.IsFiniteNumber() || (maxSquaredDistanceError < 0))
                 throw new ArgumentOutOfRangeException(nameof(maxSquaredDistanceError));
 
-            if (BaseEndpoint.HasSameCoordinatesWithMaxSquaredDistanceError(other.BaseEndpoint, maxSquaredDistanceError) &&
-                AnotherEndpoint.HasSameCoordinatesWithMaxSquaredDistanceError(other.AnotherEndpoint, maxSquaredDistanceError))
+            if (BaseEndpoint.HasSameCoordinatesAs(other.BaseEndpoint, maxSquaredDistanceError) &&
+                AnotherEndpoint.HasSameCoordinatesAs(other.AnotherEndpoint, maxSquaredDistanceError))
                 return true;
-            if (BaseEndpoint.HasSameCoordinatesWithMaxSquaredDistanceError(other.AnotherEndpoint, maxSquaredDistanceError) &&
-                AnotherEndpoint.HasSameCoordinatesWithMaxSquaredDistanceError(other.BaseEndpoint, maxSquaredDistanceError))
+            if (BaseEndpoint.HasSameCoordinatesAs(other.AnotherEndpoint, maxSquaredDistanceError) &&
+                AnotherEndpoint.HasSameCoordinatesAs(other.BaseEndpoint, maxSquaredDistanceError))
                 return true;
             return false;
         }
@@ -72,7 +72,7 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.Doub
         /// with the given max error.
         /// </summary>
         /// <param name="maxSquaredLengthError">The max squared length error. Must be a non-negative finite number.</param>
-        public bool HasSameSizeWithMaxSquaredLengthError(LineSegment other, double maxSquaredLengthError) =>
+        public bool HasSameSizeAs(LineSegment other, double maxSquaredLengthError) =>
             Abs(SquaredLength - other.SquaredLength) <= maxSquaredLengthError;
     }
 }

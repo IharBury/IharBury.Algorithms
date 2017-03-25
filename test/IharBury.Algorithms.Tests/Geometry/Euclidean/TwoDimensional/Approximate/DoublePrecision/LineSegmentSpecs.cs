@@ -45,7 +45,7 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
         public void MiddleIsCalculatedCorrectly()
         {
             var lineSegment = new LineSegment(new Point(2, 3), new Point(4, 7));
-            Assert.True(lineSegment.Middle.HasSameCoordinatesWithMaxSquaredDistanceError(new Point(3, 5), 0.00001));
+            Assert.True(lineSegment.Middle.HasSameCoordinatesAs(new Point(3, 5), 0.00001));
         }
 
         [Fact]
@@ -53,7 +53,7 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
         {
             var lineSegment1 = new LineSegment(new Point(2.001, 3.001), new Point(6.001, -2.001));
             var lineSegment2 = new LineSegment(new Point(2, 3), new Point(6, -2));
-            Assert.True(lineSegment1.HasSameCoordinatesWithMaxSquaredDistanceError(lineSegment2, 0.00001));
+            Assert.True(lineSegment1.HasSameCoordinatesAs(lineSegment2, 0.00001));
         }
 
         [Fact]
@@ -61,7 +61,7 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
         {
             var lineSegment1 = new LineSegment(new Point(2.001, 3.001), new Point(6.001, -2.001));
             var lineSegment2 = new LineSegment(new Point(6, -2), new Point(2, 3));
-            Assert.True(lineSegment1.HasSameCoordinatesWithMaxSquaredDistanceError(lineSegment2, 0.00001));
+            Assert.True(lineSegment1.HasSameCoordinatesAs(lineSegment2, 0.00001));
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
         {
             var lineSegment1 = new LineSegment(new Point(2.01, 3.01), new Point(6.01, -2.01));
             var lineSegment2 = new LineSegment(new Point(2, 3), new Point(6, -2));
-            Assert.False(lineSegment1.HasSameCoordinatesWithMaxSquaredDistanceError(lineSegment2, 0.00001));
+            Assert.False(lineSegment1.HasSameCoordinatesAs(lineSegment2, 0.00001));
         }
 
         [Fact]
@@ -77,7 +77,7 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
         {
             var lineSegment1 = new LineSegment(new Point(2, 3), new Point(2.000001, 5.000001));
             var lineSegment2 = new LineSegment(new Point(2, 3), new Point(4, 3));
-            Assert.True(lineSegment1.HasSameSizeWithMaxSquaredLengthError(lineSegment2, 0.00001));
+            Assert.True(lineSegment1.HasSameSizeAs(lineSegment2, 0.00001));
         }
 
         [Fact]
@@ -85,7 +85,7 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
         {
             var lineSegment1 = new LineSegment(new Point(2, 3), new Point(2.01, 5.01));
             var lineSegment2 = new LineSegment(new Point(2, 3), new Point(4, 3));
-            Assert.False(lineSegment1.HasSameSizeWithMaxSquaredLengthError(lineSegment2, 0.00001));
+            Assert.False(lineSegment1.HasSameSizeAs(lineSegment2, 0.00001));
         }
     }
 }

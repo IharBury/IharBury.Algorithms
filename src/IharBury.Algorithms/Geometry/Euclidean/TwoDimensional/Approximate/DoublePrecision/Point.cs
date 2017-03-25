@@ -58,7 +58,7 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.Doub
         /// with the given max squared distance error.
         /// </summary>
         /// <param name="maxSquaredDistanceError">The max squared distance error. Must be a non-negative finite number.</param>
-        public bool HasSameCoordinatesWithMaxSquaredDistanceError(Point other, double maxSquaredDistanceError)
+        public bool HasSameCoordinatesAs(Point other, double maxSquaredDistanceError)
         {
             if (!maxSquaredDistanceError.IsFiniteNumber() || (maxSquaredDistanceError < 0))
                 throw new ArgumentOutOfRangeException(nameof(maxSquaredDistanceError));
