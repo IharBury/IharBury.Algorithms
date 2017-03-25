@@ -95,5 +95,29 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
             var expectedAnotherDiagonal = new LineSegment(new Point(1, 6), new Point(5, 4));
             Assert.True(square.AnotherDiagonal.HasSameCoordinatesWithMaxSquaredDistanceError(expectedAnotherDiagonal, 0.00001));
         }
+
+        [Fact]
+        public void SquareHasSameCoordinatesAsCloseEnoughSquareWithSameVertexOrderWithTheGivenSquaredDistanceError()
+        {
+            var square1 = new Square(new Point(2.001, 3.001), new Point(6.001, -2.001));
+            var square2 = new Square(new Point(2, 3), new Point(6, -2));
+            Assert.True(square1.HasSameCoordinatesWithMaxSquaredDistanceError(square2, 0.00001));
+        }
+
+        [Fact]
+        public void SquareHasSameCoordinatesAsCloseEnoughSquareWithAnotherVertexOrderWithTheGivenSquaredDistanceError()
+        {
+            var square1 = new Square(new Point(2.001, 3.001), new Point(6.001, -2.001));
+            var square2 = new Square(new Point(6.5, 2.5), new Point(1.5, -1.5));
+            Assert.True(square1.HasSameCoordinatesWithMaxSquaredDistanceError(square2, 0.00001));
+        }
+
+        [Fact]
+        public void SquareDoesNotHaveSameCoordinatesAsFarEnoughSquareWithTheGivenSquaredDistanceError()
+        {
+            var square1 = new Square(new Point(2.01, 3.01), new Point(6.01, -2.01));
+            var square2 = new Square(new Point(2, 3), new Point(6, -2));
+            Assert.False(square1.HasSameCoordinatesWithMaxSquaredDistanceError(square2, 0.00001));
+        }
     }
 }

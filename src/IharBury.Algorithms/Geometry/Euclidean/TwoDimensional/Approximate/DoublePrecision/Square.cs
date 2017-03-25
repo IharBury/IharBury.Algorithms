@@ -1,4 +1,5 @@
-﻿using static System.Math;
+﻿using System;
+using static System.Math;
 
 namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.DoublePrecision
 {
@@ -84,5 +85,19 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.Doub
         public LineSegment AnotherDiagonal => new LineSegment(ClockwiseVertex, AnticlockwiseVertex);
 
         public override string ToString() => $"({BaseVertex}, {ClockwiseVertex}, {OppositeVertex}, {AnticlockwiseVertex})";
+
+        /// <summary>
+        /// Determines whether the square has approximately the same coordinates as <paramref name="other"/>
+        /// with the given max square distance error.
+        /// </summary>
+        /// <param name="maxSquareDistanceError">The max square distance error. Must be a non-negative finite number.</param>
+        public bool HasSameCoordinatesWithMaxSquaredDistanceError(Square other, double maxSquareDistanceError)
+        {
+            if (!maxSquareDistanceError.IsFiniteNumber() || (maxSquareDistanceError < 0))
+                throw new ArgumentOutOfRangeException(nameof(maxSquareDistanceError));
+
+            return BaseDiagonal.HasSameCoordinatesWithMaxSquaredDistanceError(other.BaseDiagonal, maxSquareDistanceError) ||
+                BaseDiagonal.HasSameCoordinatesWithMaxSquaredDistanceError(other.AnotherDiagonal, maxSquareDistanceError);
+        }
     }
 }
