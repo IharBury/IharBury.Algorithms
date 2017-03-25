@@ -49,20 +49,20 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.Doub
         public override string ToString() => $"({BaseEndpoint},{AnotherEndpoint})";
 
         /// <summary>
-        /// Determines whether the line segment is approximately equal to <paramref name="other"/>
+        /// Determines whether the line segment has approximately the same coordinates as <paramref name="other"/>
         /// with the given max square distance error.
         /// </summary>
         /// <param name="maxSquareDistanceError">The max square distance error. Must be a non-negative finite number.</param>
-        public bool EqualsWithMaxSquaredDistanceError(LineSegment other, double maxSquareDistanceError)
+        public bool HasSameCoordinatesWithMaxSquaredDistanceError(LineSegment other, double maxSquareDistanceError)
         {
             if (!maxSquareDistanceError.IsFiniteNumber() || (maxSquareDistanceError < 0))
                 throw new ArgumentOutOfRangeException(nameof(maxSquareDistanceError));
 
-            if (BaseEndpoint.EqualsWithMaxSquaredDistanceError(other.BaseEndpoint, maxSquareDistanceError) &&
-                AnotherEndpoint.EqualsWithMaxSquaredDistanceError(other.AnotherEndpoint, maxSquareDistanceError))
+            if (BaseEndpoint.HasSameCoordinatesWithMaxSquaredDistanceError(other.BaseEndpoint, maxSquareDistanceError) &&
+                AnotherEndpoint.HasSameCoordinatesWithMaxSquaredDistanceError(other.AnotherEndpoint, maxSquareDistanceError))
                 return true;
-            if (BaseEndpoint.EqualsWithMaxSquaredDistanceError(other.AnotherEndpoint, maxSquareDistanceError) &&
-                AnotherEndpoint.EqualsWithMaxSquaredDistanceError(other.BaseEndpoint, maxSquareDistanceError))
+            if (BaseEndpoint.HasSameCoordinatesWithMaxSquaredDistanceError(other.AnotherEndpoint, maxSquareDistanceError) &&
+                AnotherEndpoint.HasSameCoordinatesWithMaxSquaredDistanceError(other.BaseEndpoint, maxSquareDistanceError))
                 return true;
             return false;
         }

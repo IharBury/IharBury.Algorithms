@@ -56,22 +56,15 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
         }
 
         [Fact]
-        public void PointEqualsToItselfWithZeroError()
+        public void PointHasSameCoordinatesAsCloseEnoughPointWithTheGivenSquaredDistanceError()
         {
-            var point = new Point(2.34, 3.634);
-            Assert.True(point.EqualsWithMaxSquaredDistanceError(point, 0));
+            Assert.True(new Point(2.001, 3.001).HasSameCoordinatesWithMaxSquaredDistanceError(new Point(2, 3), 0.00001));
         }
 
         [Fact]
-        public void PointEqualsToCloseEnoughPointWithTheGivenSquaredDistanceError()
+        public void PointDoesNotHaveTheSameCoordinatesAsFarEnoughPointWithTheGivenSquaredDistanceError()
         {
-            Assert.True(new Point(2.001, 3.001).EqualsWithMaxSquaredDistanceError(new Point(2, 3), 0.00001));
-        }
-
-        [Fact]
-        public void PointDoesNotEqualToFarEnoughPointWithTheGivenSquaredDistanceError()
-        {
-            Assert.False(new Point(2.01, 3.01).EqualsWithMaxSquaredDistanceError(new Point(2, 3), 0.00001));
+            Assert.False(new Point(2.01, 3.01).HasSameCoordinatesWithMaxSquaredDistanceError(new Point(2, 3), 0.00001));
         }
     }
 }

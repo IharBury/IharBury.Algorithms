@@ -54,11 +54,11 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.Doub
         public double GetDistanceTo(Point other) => Sqrt(GetSquaredDistanceTo(other));
 
         /// <summary>
-        /// Determines whether the point is approximately equal to <paramref name="other"/>
+        /// Determines whether the point has approximately the same coordinates as <paramref name="other"/>
         /// with the given max square distance error.
         /// </summary>
         /// <param name="maxSquareDistanceError">The max square distance error. Must be a non-negative finite number.</param>
-        public bool EqualsWithMaxSquaredDistanceError(Point other, double maxSquareDistanceError)
+        public bool HasSameCoordinatesWithMaxSquaredDistanceError(Point other, double maxSquareDistanceError)
         {
             if (!maxSquareDistanceError.IsFiniteNumber() || (maxSquareDistanceError < 0))
                 throw new ArgumentOutOfRangeException(nameof(maxSquareDistanceError));

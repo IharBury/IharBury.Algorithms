@@ -1,6 +1,4 @@
-﻿using System;
-
-using static System.Math;
+﻿using static System.Math;
 
 namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.DoublePrecision
 {

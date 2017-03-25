@@ -64,28 +64,28 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
         {
             var square = new Square(new Point(2, 3), new Point(4, 7));
             var expectedBaseDiagonal = new LineSegment(new Point(2, 3), new Point(4, 7));
-            Assert.True(square.BaseDiagonal.EqualsWithMaxSquaredDistanceError(expectedBaseDiagonal, 0.00001));
+            Assert.True(square.BaseDiagonal.HasSameCoordinatesWithMaxSquaredDistanceError(expectedBaseDiagonal, 0.00001));
         }
 
         [Fact]
         public void CenterIsCalculatedCorrectly()
         {
             var square = new Square(new Point(2, 3), new Point(4, 7));
-            Assert.True(square.Center.EqualsWithMaxSquaredDistanceError(new Point(3, 5), 0.00001));
+            Assert.True(square.Center.HasSameCoordinatesWithMaxSquaredDistanceError(new Point(3, 5), 0.00001));
         }
 
         [Fact]
         public void ClockwiseVertexIsCalculatedCorrectly()
         {
             var square = new Square(new Point(2, 3), new Point(4, 7));
-            Assert.True(square.ClockwiseVertex.EqualsWithMaxSquaredDistanceError(new Point(1, 6), 0.00001));
+            Assert.True(square.ClockwiseVertex.HasSameCoordinatesWithMaxSquaredDistanceError(new Point(1, 6), 0.00001));
         }
 
         [Fact]
         public void AnticlockwiseVertexIsCalculatedCorrectly()
         {
             var square = new Square(new Point(2, 3), new Point(4, 7));
-            Assert.True(square.AnticlockwiseVertex.EqualsWithMaxSquaredDistanceError(new Point(5, 4), 0.00001));
+            Assert.True(square.AnticlockwiseVertex.HasSameCoordinatesWithMaxSquaredDistanceError(new Point(5, 4), 0.00001));
         }
 
         [Fact]
@@ -93,7 +93,7 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
         {
             var square = new Square(new Point(2, 3), new Point(4, 7));
             var expectedAnotherDiagonal = new LineSegment(new Point(1, 6), new Point(5, 4));
-            Assert.True(square.AnotherDiagonal.EqualsWithMaxSquaredDistanceError(expectedAnotherDiagonal, 0.00001));
+            Assert.True(square.AnotherDiagonal.HasSameCoordinatesWithMaxSquaredDistanceError(expectedAnotherDiagonal, 0.00001));
         }
     }
 }
