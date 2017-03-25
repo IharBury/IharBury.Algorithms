@@ -64,5 +64,10 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.Doub
                 throw new ArgumentOutOfRangeException(nameof(maxSquaredDistanceError));
             return GetSquaredDistanceTo(other) <= maxSquaredDistanceError;
         }
+
+        /// <summary>
+        /// Calculates a free vector from the point to <see cref="other"/>.
+        /// </summary>
+        public FreeVector GetFreeVectorTo(Point other) => new FreeVector(other.X - X, other.Y - Y);
     }
 }

@@ -66,5 +66,12 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
         {
             Assert.False(new Point(2.01, 3.01).HasSameCoordinatesAs(new Point(2, 3), 0.00001));
         }
+
+        [Fact]
+        public void FreeVectorToAnotherPointIsCalculatedCorrectly()
+        {
+            var vector = new Point(1, 2).GetFreeVectorTo(new Point(3, 5));
+            Assert.True(vector.HasSameCoordinatesAs(new FreeVector(2, 3), 0.00001));
+        }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-
-using static System.Math;
-
-namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.DoublePrecision
+﻿namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.DoublePrecision
 {
     /// <summary>
     /// Represents a triangle in a two-dimensional Euclidean space
@@ -41,16 +37,17 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.Doub
         /// <summary>
         /// Approximate area of the triangle.
         /// </summary>
-        public double Area
-        {
-            get
-            {
-                var clockwiseVectorX = ClockwiseVertex.X - BaseVertex.X;
-                var clockwiseVectorY = ClockwiseVertex.Y - BaseVertex.Y;
-                var anticlockwiseVectorX = AnticlockwiseVertex.X - BaseVertex.X;
-                var anticlockwiseVectorY = AnticlockwiseVertex.Y - BaseVertex.Y;
-                return (clockwiseVectorY * anticlockwiseVectorX - clockwiseVectorX * anticlockwiseVectorY) / 2;
-            }
-        }
+        public double Area =>
+            (ClockwiseFreeVector.Y * AnticlockwiseFreeVector.X - ClockwiseFreeVector.X * AnticlockwiseFreeVector.Y) / 2;
+
+        /// <summary>
+        /// Free vector from <see cref="BaseVertex"/> to <see cref="ClockwiseVertex"/>.
+        /// </summary>
+        public FreeVector ClockwiseFreeVector => BaseVertex.GetFreeVectorTo(ClockwiseVertex);
+
+        /// <summary>
+        /// Free vector from <see cref="BaseVertex"/> to <see cref="AnticlockwiseVertex"/>.
+        /// </summary>
+        public FreeVector AnticlockwiseFreeVector => BaseVertex.GetFreeVectorTo(AnticlockwiseVertex);
     }
 }

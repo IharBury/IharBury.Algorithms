@@ -46,5 +46,19 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
         {
             Assert.Equal(10, new Triangle(new Point(2, 3), new Point(4, 7), new Point(6, 1)).Area, 5);
         }
+
+        [Fact]
+        public void ClockwiseFreeVectorIsCalculatedCorrectly()
+        {
+            var triangle = new Triangle(new Point(2, 3), new Point(4, 7), new Point(6, 1));
+            Assert.True(triangle.ClockwiseFreeVector.HasSameCoordinatesAs(new FreeVector(2, 4), 0.00001));
+        }
+
+        [Fact]
+        public void AnticlockwiseFreeVectorIsCalculatedCorrectly()
+        {
+            var triangle = new Triangle(new Point(2, 3), new Point(4, 7), new Point(6, 1));
+            Assert.True(triangle.AnticlockwiseFreeVector.HasSameCoordinatesAs(new FreeVector(4, -2), 0.00001));
+        }
     }
 }
