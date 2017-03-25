@@ -88,16 +88,16 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.Doub
 
         /// <summary>
         /// Determines whether the square has approximately the same coordinates as <paramref name="other"/>
-        /// with the given max square distance error.
+        /// with the given max squared distance error.
         /// </summary>
-        /// <param name="maxSquareDistanceError">The max square distance error. Must be a non-negative finite number.</param>
-        public bool HasSameCoordinatesWithMaxSquaredDistanceError(Square other, double maxSquareDistanceError)
+        /// <param name="maxSquaredDistanceError">The max squared distance error. Must be a non-negative finite number.</param>
+        public bool HasSameCoordinatesWithMaxSquaredDistanceError(Square other, double maxSquaredDistanceError)
         {
-            if (!maxSquareDistanceError.IsFiniteNumber() || (maxSquareDistanceError < 0))
-                throw new ArgumentOutOfRangeException(nameof(maxSquareDistanceError));
+            if (!maxSquaredDistanceError.IsFiniteNumber() || (maxSquaredDistanceError < 0))
+                throw new ArgumentOutOfRangeException(nameof(maxSquaredDistanceError));
 
-            return BaseDiagonal.HasSameCoordinatesWithMaxSquaredDistanceError(other.BaseDiagonal, maxSquareDistanceError) ||
-                BaseDiagonal.HasSameCoordinatesWithMaxSquaredDistanceError(other.AnotherDiagonal, maxSquareDistanceError);
+            return BaseDiagonal.HasSameCoordinatesWithMaxSquaredDistanceError(other.BaseDiagonal, maxSquaredDistanceError) ||
+                BaseDiagonal.HasSameCoordinatesWithMaxSquaredDistanceError(other.AnotherDiagonal, maxSquaredDistanceError);
         }
     }
 }

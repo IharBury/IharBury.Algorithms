@@ -71,5 +71,21 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
             var lineSegment2 = new LineSegment(new Point(2, 3), new Point(6, -2));
             Assert.False(lineSegment1.HasSameCoordinatesWithMaxSquaredDistanceError(lineSegment2, 0.00001));
         }
+
+        [Fact]
+        public void LineSegmentHasSameSizeAsSimilarEnoughLineSegmentWithTheGivenSquaredLengthError()
+        {
+            var lineSegment1 = new LineSegment(new Point(2, 3), new Point(2.000001, 5.000001));
+            var lineSegment2 = new LineSegment(new Point(2, 3), new Point(4, 3));
+            Assert.True(lineSegment1.HasSameSizeWithMaxSquaredLengthError(lineSegment2, 0.00001));
+        }
+
+        [Fact]
+        public void LineSegmentDoesNotHaveHasSameSizeAsDifferentEnoughLineSegmentWithTheGivenSquaredLengthError()
+        {
+            var lineSegment1 = new LineSegment(new Point(2, 3), new Point(2.01, 5.01));
+            var lineSegment2 = new LineSegment(new Point(2, 3), new Point(4, 3));
+            Assert.False(lineSegment1.HasSameSizeWithMaxSquaredLengthError(lineSegment2, 0.00001));
+        }
     }
 }
