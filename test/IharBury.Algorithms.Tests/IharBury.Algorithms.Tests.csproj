@@ -70,6 +70,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\AngleMeasureTests.cs" />
     <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\CircleTests.cs" />
     <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\FreeVectorTests.cs" />
     <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\TriangleTests.cs" />
