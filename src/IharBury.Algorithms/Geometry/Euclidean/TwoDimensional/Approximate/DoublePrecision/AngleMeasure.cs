@@ -1,4 +1,6 @@
-﻿namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.DoublePrecision
+﻿using static System.Math;
+
+namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.DoublePrecision
 {
     /// <summary>
     /// Represents the measure of an angle in a two-dimensional Euclidean space
@@ -6,6 +8,11 @@
     /// </summary>
     public struct AngleMeasure
     {
+        /// <summary>
+        /// The measure of angle of two π radians.
+        /// </summary>
+        public static AngleMeasure Perigon { get; } = new AngleMeasure(2 * PI);
+
         public AngleMeasure(double inRadians)
         {
             InRadians = inRadians;
