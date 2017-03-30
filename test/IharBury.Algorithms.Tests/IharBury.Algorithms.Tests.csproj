@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\AngleMeasureTests.cs" />
     <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\CircleTests.cs" />
+    <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\CircularSegmentTests.cs" />
     <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\CircularSectorTests.cs" />
     <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\FreeVectorTests.cs" />
     <Compile Include="Geometry\Euclidean\TwoDimensional\Approximate\DoublePrecision\TriangleTests.cs" />
