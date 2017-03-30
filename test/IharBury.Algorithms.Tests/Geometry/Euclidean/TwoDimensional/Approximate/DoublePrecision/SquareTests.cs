@@ -140,5 +140,26 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
             var square = new Square(new Point(2, 3), new Point(4, 7));
             Assert.False(square.HasInside(new Point(0.9, 6), 0.00001));
         }
+
+        [Fact]
+        public void WhenSquareHasAPointOutsideItIsDetected()
+        {
+            var square = new Square(new Point(2, 3), new Point(4, 7));
+            Assert.True(square.HasOutside(new Point(1, 3), 0.00001));
+        }
+
+        [Fact]
+        public void WhenSquareHasAPointCloseEnoughInsideItIsApproximatelyOutside()
+        {
+            var square = new Square(new Point(2, 3), new Point(4, 7));
+            Assert.True(square.HasOutside(new Point(1.001, 6), 0.00001));
+        }
+
+        [Fact]
+        public void WhenSquareHasAPointFarEnoughInsideItIsNotApproximatelyOutside()
+        {
+            var square = new Square(new Point(2, 3), new Point(4, 7));
+            Assert.False(square.HasOutside(new Point(1.1, 6), 0.00001));
+        }
     }
 }

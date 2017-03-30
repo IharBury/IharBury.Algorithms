@@ -114,5 +114,20 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.Doub
                 new DirectedLine(OppositeVertex, AnticlockwiseVertex).HasToTheRight(point, maxSquaredDistanceFromSideLineError) &&
                 new DirectedLine(AnticlockwiseVertex, BaseVertex).HasToTheRight(point, maxSquaredDistanceFromSideLineError);
         }
+
+        /// <summary>
+        /// Determines whether the square has the given point approximately outside it
+        /// with the given max squared distance from side line error.
+        /// </summary>
+        public bool HasOutside(Point point, double maxSquaredDistanceFromSideLineError)
+        {
+            if (!maxSquaredDistanceFromSideLineError.IsFiniteNumber() || (maxSquaredDistanceFromSideLineError < 0))
+                throw new ArgumentOutOfRangeException(nameof(maxSquaredDistanceFromSideLineError));
+
+            return new DirectedLine(BaseVertex, ClockwiseVertex).HasToTheLeft(point, maxSquaredDistanceFromSideLineError) ||
+                new DirectedLine(ClockwiseVertex, OppositeVertex).HasToTheLeft(point, maxSquaredDistanceFromSideLineError) ||
+                new DirectedLine(OppositeVertex, AnticlockwiseVertex).HasToTheLeft(point, maxSquaredDistanceFromSideLineError) ||
+                new DirectedLine(AnticlockwiseVertex, BaseVertex).HasToTheLeft(point, maxSquaredDistanceFromSideLineError);
+        }
     }
 }
