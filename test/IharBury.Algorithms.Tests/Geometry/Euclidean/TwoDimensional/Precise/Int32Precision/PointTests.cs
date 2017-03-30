@@ -19,7 +19,7 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Precise.In
         {
             var point = new Point(3, 3);
             var backPoint = new Point(1, 1);
-            var forwardPoint = new Point(1, 2);
+            var forwardPoint = new Point(2, 1);
             Assert.True(point.IsToTheLeftOf(backPoint, forwardPoint));
         }
 
@@ -28,7 +28,7 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Precise.In
         {
             var point = new Point(3, 3);
             var backPoint = new Point(1, 1);
-            var forwardPoint = new Point(2, 1);
+            var forwardPoint = new Point(1, 2);
             Assert.False(point.IsToTheLeftOf(backPoint, forwardPoint));
         }
     }

@@ -34,8 +34,15 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Precise.Int32Pre
 
         public bool IsAtLine(Line line) => line.HasPoint(this);
 
+        /// <summary>
+        /// Determines whether the point is to the left of the given directed line defined by two of its points.
+        /// Left here is defined in such a way that Y coordinate is positive to the left of the X axis.
+        /// </summary>
         public bool IsToTheLeftOf(Point backPoint, Point forwardPoint)
         {
+            if (backPoint == forwardPoint)
+                throw new ArgumentOutOfRangeException("The back point is the same as the forward point.");
+
             checked
             {
                 var xDifference1 = backPoint.X - (long)X;
@@ -43,7 +50,7 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Precise.Int32Pre
                 var xDifference2 = backPoint.X - (long)forwardPoint.X;
                 var yDifference2 = backPoint.Y - (long)Y;
 
-                return xDifference1 * (BigInteger)yDifference1 > xDifference2 * (BigInteger)yDifference2;
+                return xDifference1 * (BigInteger)yDifference1 < xDifference2 * (BigInteger)yDifference2;
             }
         }
     }
