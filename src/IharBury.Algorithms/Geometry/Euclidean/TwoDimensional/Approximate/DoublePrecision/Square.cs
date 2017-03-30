@@ -99,5 +99,20 @@ namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.Doub
             return BaseDiagonal.HasSameCoordinatesAs(other.BaseDiagonal, maxSquaredDistanceError) ||
                 BaseDiagonal.HasSameCoordinatesAs(other.AnotherDiagonal, maxSquaredDistanceError);
         }
+
+        /// <summary>
+        /// Determines whether the square has the given point approximately inside it
+        /// with the given max squared distance from side line error.
+        /// </summary>
+        public bool HasInside(Point point, double maxSquaredDistanceFromSideLineError)
+        {
+            if (!maxSquaredDistanceFromSideLineError.IsFiniteNumber() || (maxSquaredDistanceFromSideLineError < 0))
+                throw new ArgumentOutOfRangeException(nameof(maxSquaredDistanceFromSideLineError));
+
+            return new DirectedLine(BaseVertex, ClockwiseVertex).HasToTheRight(point, maxSquaredDistanceFromSideLineError) &&
+                new DirectedLine(ClockwiseVertex, OppositeVertex).HasToTheRight(point, maxSquaredDistanceFromSideLineError) &&
+                new DirectedLine(OppositeVertex, AnticlockwiseVertex).HasToTheRight(point, maxSquaredDistanceFromSideLineError) &&
+                new DirectedLine(AnticlockwiseVertex, BaseVertex).HasToTheRight(point, maxSquaredDistanceFromSideLineError);
+        }
     }
 }

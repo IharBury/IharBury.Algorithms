@@ -1,4 +1,6 @@
-﻿namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.DoublePrecision
+﻿using System;
+
+namespace IharBury.Algorithms.Geometry.Euclidean.TwoDimensional.Approximate.DoublePrecision
 {
     /// <summary>
     /// Represents a directed line in a two-dimensional Euclidean space
@@ -30,6 +32,9 @@
         /// </summary>
         public bool HasToTheLeft(Point point, double maxSquaredDistanceError)
         {
+            if (!maxSquaredDistanceError.IsFiniteNumber() || (maxSquaredDistanceError < 0))
+                throw new ArgumentOutOfRangeException(nameof(maxSquaredDistanceError));
+
             var xDifference1 = BasePoint.X - point.X;
             var yDifference1 = BasePoint.Y - ForwardPoint.Y;
             var xDifference2 = BasePoint.X - ForwardPoint.X;
@@ -47,6 +52,9 @@
         /// </summary>
         public bool HasToTheRight(Point point, double maxSquaredDistanceError)
         {
+            if (!maxSquaredDistanceError.IsFiniteNumber() || (maxSquaredDistanceError < 0))
+                throw new ArgumentOutOfRangeException(nameof(maxSquaredDistanceError));
+
             var xDifference1 = BasePoint.X - point.X;
             var yDifference1 = BasePoint.Y - ForwardPoint.Y;
             var xDifference2 = BasePoint.X - ForwardPoint.X;
