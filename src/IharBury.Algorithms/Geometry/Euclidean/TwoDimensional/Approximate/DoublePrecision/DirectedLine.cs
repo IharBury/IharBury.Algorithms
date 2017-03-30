@@ -40,5 +40,22 @@
             var squaredDistance = areaFactor * areaFactor / BasePoint.GetSquaredDistanceTo(ForwardPoint);
             return squaredDistance <= maxSquaredDistanceError;
         }
+
+        /// <summary>
+        /// Determines whether the given point is to the right with the given max squared distance error.
+        /// Right here is defined in such a way that X coordinate is positive to the right of the Y axis.
+        /// </summary>
+        public bool HasToTheRight(Point point, double maxSquaredDistanceError)
+        {
+            var xDifference1 = BasePoint.X - point.X;
+            var yDifference1 = BasePoint.Y - ForwardPoint.Y;
+            var xDifference2 = BasePoint.X - ForwardPoint.X;
+            var yDifference2 = BasePoint.Y - point.Y;
+            var areaFactor = xDifference1 * yDifference1 - xDifference2 * yDifference2;
+            if (areaFactor > 0)
+                return true;
+            var squaredDistance = areaFactor * areaFactor / BasePoint.GetSquaredDistanceTo(ForwardPoint);
+            return squaredDistance <= maxSquaredDistanceError;
+        }
     }
 }
