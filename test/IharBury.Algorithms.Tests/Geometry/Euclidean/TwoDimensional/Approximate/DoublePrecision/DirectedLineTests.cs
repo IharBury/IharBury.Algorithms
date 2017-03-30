@@ -28,5 +28,23 @@ namespace IharBury.Algorithms.Tests.Geometry.Euclidean.TwoDimensional.Approximat
         {
             Assert.Equal(7, new DirectedLine(new Point(2, 3), new Point(4, 7)).ForwardPoint.Y);
         }
+
+        [Fact]
+        public void WhenAPointIsToTheLeftItIsDetected()
+        {
+            Assert.True(new DirectedLine(new Point(1, 1), new Point(2, 1)).HasToTheLeft(new Point(3, 3), 0.00001));
+        }
+
+        [Fact]
+        public void WhenAPointIsCloseEnoughToTheRightItIsApproximatelyToTheLeft()
+        {
+            Assert.True(new DirectedLine(new Point(1, 1), new Point(1, 2)).HasToTheLeft(new Point(1.001, 3), 0.00001));
+        }
+
+        [Fact]
+        public void WhenAPointIsFarEnoughToTheRightItIsNotApproximatelyToTheLeft()
+        {
+            Assert.False(new DirectedLine(new Point(1, 1), new Point(1, 2)).HasToTheLeft(new Point(3, 3), 0.00001));
+        }
     }
 }
